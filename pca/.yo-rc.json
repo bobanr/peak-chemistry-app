@@ -1,0 +1,18 @@
+{
+  "generator-jhipster": {
+    "baseName": "pca",
+    "packageName": "com.pca",
+    "packageFolder": "com/pca",
+    "authenticationType": "cookie",
+    "hibernateCache": "ehcache",
+    "clusteredHttpSession": "no",
+    "websocket": "no",
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "useCompass": false,
+    "buildTool": "maven",
+    "frontendBuilder": "grunt",
+    "javaVersion": "7"
+  }
+}
