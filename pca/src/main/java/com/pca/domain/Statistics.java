@@ -1,0 +1,25 @@
+package com.pca.domain;
+
+import java.io.Serializable;
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "PCA_STATISTICS")
+public class Statistics extends DefaultModel implements Serializable{
+
+	@Column(name = "STAT_TIME")
+	private Date statTime;
+	
+	@Column(name = "STAT_TYPE")
+	private Long statType;
+	
+	@ManyToOne
+	@JoinColumn(name = "MATCH_ID")
+	private Matches matches;
+}

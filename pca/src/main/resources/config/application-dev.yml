@@ -10,16 +10,16 @@ spring:
         databaseName: 
         serverName: 
         username: root
-        password: P@ssw0rd
+        password: dzamto
 
     jpa:
-        database-platform: org.hibernate.dialect.MySQLInnoDBDialect
+        database-platform: org.hibernate.dialect.MySQLDialect
         database: MYSQL
         openInView: false
         show_sql: true
-        generate-ddl: false
+        generate-ddl: true
         hibernate:
-            ddl-auto: none
+            ddl-auto: create-drop
             naming-strategy: org.hibernate.cfg.EJB3NamingStrategy
         properties:
             hibernate.cache.use_second_level_cache: true
