@@ -8,10 +8,11 @@ import org.springframework.stereotype.Component;
  * Implementation of AuditorAware based on Spring Security.
  */
 @Component
-public class SpringSecurityAuditorAware implements AuditorAware<String> {
+public class SpringSecurityAuditorAware implements AuditorAware<Long> {
 
-    public String getCurrentAuditor() {
+    public Long getCurrentAuditor() {
         String userName = SecurityUtils.getCurrentLogin();
-        return (userName != null ? userName : Constants.SYSTEM_ACCOUNT);
+        //TODO: inject user service and get the use id
+        return 1l;
     }
 }
