@@ -114,24 +114,28 @@ pcaApp.factory('AuditsService', ['$http',
         }
     }]);
 
-pcaApp.factory('Session', [
-    function () {
-        this.create = function (login, firstName, lastName, email, userRoles) {
-            this.login = login;
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.email = email;
-            this.userRoles = userRoles;
-        };
-        this.invalidate = function () {
-            this.login = null;
-            this.firstName = null;
-            this.lastName = null;
-            this.email = null;
-            this.userRoles = null;
-        };
-        return this;
-    }]);
+pcaApp.factory('Session', ['$rootScope',
+                   		function($rootScope) {
+                			this.create = function(login, firstName, lastName, email,
+                					userRoles, hasAuthority) {
+                				this.login = login;
+                				this.firstName = firstName;
+                				this.lastName = lastName;
+                				this.email = email;
+                				this.userRoles = userRoles;
+                				this.hasAuthority = hasAuthority;
+                				$rootScope.logout = false;
+                			};
+                			this.invalidate = function() {
+                				this.login = null;
+                				this.firstName = null;
+                				this.lastName = null;
+                				this.email = null;
+                				this.userRoles = null;
+                				this.hasAuthority = null;
+                			};
+                			return this;
+                		} ]);
 
 pcaApp.factory('AuthenticationSharedService', ['$rootScope', '$http', 'authService', 'Session', 'Account',
     function ($rootScope, $http, authService, Session, Account) {
@@ -159,7 +163,9 @@ pcaApp.factory('AuthenticationSharedService', ['$rootScope', '$http', 'authServi
                 $http.get('protected/transparent.gif', {
                     ignoreAuthModule: 'ignoreAuthModule'
                 }).success(function (data, status, headers, config) {
-                    if (!Session.login) {
+                	if ((!Session.login)
+							&& ((typeof ($rootScope.logout) === 'undefined')
+									|| ($rootScope.logout && $rootScope.logout == false) || !$rootScope.logout)) {
                         Account.get(function(data) {
                             Session.create(data.login, data.firstName, data.lastName, data.email, data.roles);
                             $rootScope.account = Session;
