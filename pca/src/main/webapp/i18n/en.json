@@ -311,5 +311,18 @@
         "title": "Error page!",
         "403": "You are not authorized to access the page."
     },
+    "player":{
+    "title":"Player",
+    "firstName":"First name",
+    "lastName":"Last name",
+    "nationality":"Nationality",
+    "bodyColor":"Body color",
+    "dateOfBorn":"Date of born",
+    "placeOfBorn":"Place of born",
+    "countryOfBorn":"Country of born",
+    "shirtNumber":Shirt number",
+    "yearInTeam":"Year in team",
+    "positionInTeam":"Position in team"  
+    },
     "footer": "This is your footer"
 }

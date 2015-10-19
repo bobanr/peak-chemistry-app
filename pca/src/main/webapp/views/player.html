@@ -1,0 +1,231 @@
+<div>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <h1 translate="player.title">Player</h1>
+
+            <div class="alert alert-success" ng-show="success" translate="register.messages.success">
+                <strong>Registration saved!</strong> Please check your email for confirmation.
+            </div>
+
+            <div class="alert alert-danger" ng-show="error" translate="register.messages.error.fail">
+                <strong>Registration failed!</strong> Please check your input and try again.
+            </div>                       
+
+            <form ng-show="!success" name="form" role="form" novalidate
+                  class="ng-scope ng-invalid ng-invalid-required ng-dirty ng-valid-minlength"
+                  ng-submit="player()">
+
+                <div class="form-group">
+                    <label translate="player.firstName">First name</label>
+                    <input type="text" class="form-control" name="firstName" placeholder="{{'player.firstName' | translate}}"
+                           ng-model="player.firstName" ng-minlength=1 ng-maxlength=50 required>
+                    <div class="error"
+                         ng-show="form.login.$dirty && form.login.$invalid">
+                        <small class="error"
+                               ng-show="form.login.$error.required" translate="register.messages.validate.login.required">
+                            Your login is required.
+                        </small>
+                        <small class="error"
+                               ng-show="form.login.$error.minlength" translate="register.messages.validate.login.minlength">
+                            Your login is required to be at least 1 character
+                        </small>
+                        <small class="error"
+                               ng-show="form.login.$error.maxlength" translate="register.messages.validate.login.maxlength">
+                            Your login cannot be longer than 50 characters
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label translate="player.lastName">Last name</label>
+                    <input type="text" class="form-control" name="lastName" placeholder="{{'player.lastName' | translate}}"
+                           ng-model="player.lastName" ng-minlength=1 ng-maxlength=50 required>
+                  <div class="error"
+                         ng-show="form.login.$dirty && form.login.$invalid">
+                        <small class="error"
+                               ng-show="form.login.$error.required" translate="register.messages.validate.login.required">
+                            Your login is required.
+                        </small>
+                        <small class="error"
+                               ng-show="form.login.$error.minlength" translate="register.messages.validate.login.minlength">
+                            Your login is required to be at least 1 character
+                        </small>
+                        <small class="error"
+                               ng-show="form.login.$error.maxlength" translate="register.messages.validate.login.maxlength">
+                            Your login cannot be longer than 50 characters
+                        </small>
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <label translate="player.nationality">Nationality</label>
+                    <input type="text" class="form-control" name="nationality" placeholder="{{'player.nationality' | translate}}"
+                           ng-model="player.nationality" ng-minlength=1 ng-maxlength=50 required>
+                    <div class="error"
+                         ng-show="form.login.$dirty && form.login.$invalid">
+                        <small class="error"
+                               ng-show="form.login.$error.required" translate="register.messages.validate.login.required">
+                            Your login is required.
+                        </small>
+                        <small class="error"
+                               ng-show="form.login.$error.minlength" translate="register.messages.validate.login.minlength">
+                            Your login is required to be at least 1 character
+                        </small>
+                        <small class="error"
+                               ng-show="form.login.$error.maxlength" translate="register.messages.validate.login.maxlength">
+                            Your login cannot be longer than 50 characters
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label translate="player.bodyColor">Body of color</label>
+                    <input type="text" class="form-control" name="bodyColor" placeholder="{{'player.bodyColor' | translate}}"
+                           ng-model="player.bodyColor" ng-minlength=1 ng-maxlength=50 required>
+                   <div class="error"
+                         ng-show="form.login.$dirty && form.login.$invalid">
+                        <small class="error"
+                               ng-show="form.login.$error.required" translate="register.messages.validate.login.required">
+                            Your login is required.
+                        </small>
+                        <small class="error"
+                               ng-show="form.login.$error.minlength" translate="register.messages.validate.login.minlength">
+                            Your login is required to be at least 1 character
+                        </small>
+                        <small class="error"
+                               ng-show="form.login.$error.maxlength" translate="register.messages.validate.login.maxlength">
+                            Your login cannot be longer than 50 characters
+                        </small>
+                    </div>
+                </div>
+                  <div class="form-group">
+                    <label translate="player.dateOfBorn">Date of born</label>
+                    <input type="text" class="form-control" name="dateOfBorn" placeholder="{{'player.dateOfBorn' | translate}}"
+                           ng-model="player.dateOfBorn" required>
+                    <div class="error"
+                         ng-show="form.login.$dirty && form.login.$invalid">
+                        <small class="error"
+                               ng-show="form.login.$error.required" translate="register.messages.validate.login.required">
+                            Your login is required.
+                        </small>
+                        <small class="error"
+                               ng-show="form.login.$error.minlength" translate="register.messages.validate.login.minlength">
+                            Your login is required to be at least 1 character
+                        </small>
+                        <small class="error"
+                               ng-show="form.login.$error.maxlength" translate="register.messages.validate.login.maxlength">
+                            Your login cannot be longer than 50 characters
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label translate="player.placeOfBorn">Place of born</label>
+                    <input type="text" class="form-control" name="placeOfBorn" placeholder="{{'player.placeOfBorn' | translate}}"
+                           ng-model="player.placeOfBorn" ng-minlength=1 ng-maxlength=50 required>
+                     <div class="error"
+                         ng-show="form.login.$dirty && form.login.$invalid">
+                        <small class="error"
+                               ng-show="form.login.$error.required" translate="register.messages.validate.login.required">
+                            Your login is required.
+                        </small>
+                        <small class="error"
+                               ng-show="form.login.$error.minlength" translate="register.messages.validate.login.minlength">
+                            Your login is required to be at least 1 character
+                        </small>
+                        <small class="error"
+                               ng-show="form.login.$error.maxlength" translate="register.messages.validate.login.maxlength">
+                            Your login cannot be longer than 50 characters
+                        </small>
+                    </div>
+                </div>             
+                 <div class="form-group">
+                    <label translate="player.countryOfBorn">Country of born</label>
+                    <input type="text" class="form-control" name="countryOfBorn" placeholder="{{'player.countryOfBorn' | translate}}"
+                           ng-model="player.countryOfBorn" ng-minlength=1 ng-maxlength=50 required>
+                    <div class="error"
+                         ng-show="form.login.$dirty && form.login.$invalid">
+                        <small class="error"
+                               ng-show="form.login.$error.required" translate="register.messages.validate.login.required">
+                            Your login is required.
+                        </small>
+                        <small class="error"
+                               ng-show="form.login.$error.minlength" translate="register.messages.validate.login.minlength">
+                            Your login is required to be at least 1 character
+                        </small>
+                        <small class="error"
+                               ng-show="form.login.$error.maxlength" translate="register.messages.validate.login.maxlength">
+                            Your login cannot be longer than 50 characters
+                        </small>
+                    </div>
+                </div>
+               <div class="form-group">
+                    <label translate="player.positionInTeam">Position in team</label>
+                    <input type="text" class="form-control" name="positionInTeam" placeholder="{{'player.positionInTeam' | translate}}"
+                           ng-model="player.positionInTeam" ng-minlength=1 ng-maxlength=50 required>
+                     <div class="error"
+                         ng-show="form.login.$dirty && form.login.$invalid">
+                        <small class="error"
+                               ng-show="form.login.$error.required" translate="register.messages.validate.login.required">
+                            Your login is required.
+                        </small>
+                        <small class="error"
+                               ng-show="form.login.$error.minlength" translate="register.messages.validate.login.minlength">
+                            Your login is required to be at least 1 character
+                        </small>
+                        <small class="error"
+                               ng-show="form.login.$error.maxlength" translate="register.messages.validate.login.maxlength">
+                            Your login cannot be longer than 50 characters
+                        </small>
+                    </div>
+                </div>
+               
+                <table class="table">
+						<tr>
+							<td><label translate="player.shirtNumber">Shirt number</label></td>
+							<td><label translate="player.yearInTeam">Year in team</label></td>
+						</tr>
+						<tr>
+							<td><input type="number" class="form-control" name="shirtNumber" placeholder="{{'player.shirtNumber' | translate}}"
+                           ng-model="player.shirtNumber" ng-minlength=1 ng-maxlength=5 required>
+
+								 <div class="error"
+                         ng-show="form.login.$dirty && form.login.$invalid">
+                        <small class="error"
+                               ng-show="form.login.$error.required" translate="register.messages.validate.login.required">
+                            Your login is required.
+                        </small>
+                        <small class="error"
+                               ng-show="form.login.$error.minlength" translate="register.messages.validate.login.minlength">
+                            Your login is required to be at least 1 character
+                        </small>
+                        <small class="error"
+                               ng-show="form.login.$error.maxlength" translate="register.messages.validate.login.maxlength">
+                            Your login cannot be longer than 50 characters
+                        </small>
+                    </div>
+                    </td>
+						<td><input type="text" class="form-control" name="yearInTeam" placeholder="{{'player.yearInTeam' | translate}}"
+                           ng-model="player.yearInTeam" ng-minlength=1 ng-maxlength=50 required>
+								 <div class="error"
+                         ng-show="form.login.$dirty && form.login.$invalid">
+                        <small class="error"
+                               ng-show="form.login.$error.required" translate="register.messages.validate.login.required">
+                            Your login is required.
+                        </small>
+                        <small class="error"
+                               ng-show="form.login.$error.minlength" translate="register.messages.validate.login.minlength">
+                            Your login is required to be at least 1 character
+                        </small>
+                        <small class="error"
+                               ng-show="form.login.$error.maxlength" translate="register.messages.validate.login.maxlength">
+                            Your login cannot be longer than 50 characters
+                        </small>
+                    </div>
+                    </td>
+						</tr>
+					</table>                                         
+                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary" translate="register.form.button">Register</button>
+            </form>
+            <p></p>        
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
