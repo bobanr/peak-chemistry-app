@@ -57,7 +57,7 @@ public class User extends DefaultModel implements Serializable {
     @JsonIgnore
     @ManyToMany
     @JoinTable(
-            name = "EM_USER_PERMISSIONS",
+            name = "PCA_USER_PERMISSIONS",
             joinColumns = {@JoinColumn(name = "USER_ID", referencedColumnName = "ID")},
             inverseJoinColumns = {@JoinColumn(name = "PERMISSION_ID", referencedColumnName = "ID")})
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
