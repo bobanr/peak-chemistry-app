@@ -5,7 +5,7 @@ pcaApp.controller('PlayerController', [ '$scope','$rootScope','$translate', 'Pla
 
 	$scope.success = null;
     $scope.error = null;
-    $scope.player = function () {
+    $scope.savePlayer = function () {
     	PlayerService.save($scope.player,
                 function (value, responseHeaders) {
                     $scope.error = null;
