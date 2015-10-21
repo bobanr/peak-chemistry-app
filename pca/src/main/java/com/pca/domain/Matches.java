@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 @Table(name = "PCA_MATCHES")
 public class Matches extends DefaultModel implements Serializable {
 	
-	@NotNull
+	@NotNull 
 	@Column(name = "OPPONENT_NAME")
 	private String opponentName;
 	
