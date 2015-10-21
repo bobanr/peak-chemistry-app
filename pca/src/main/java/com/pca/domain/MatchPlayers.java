@@ -13,7 +13,7 @@ public class MatchPlayers extends DefaultModel implements Serializable{
 
 	@ManyToOne
 	@JoinColumn(name = "PLAYER_ID")
-	private Players players;
+	private Player players;
 	
 	@ManyToOne
 	@JoinColumn(name = "MATCH_ID")
@@ -23,17 +23,17 @@ public class MatchPlayers extends DefaultModel implements Serializable{
 		
 	}
 
-	public MatchPlayers(Players players, Matches matches) {
+	public MatchPlayers(Player players, Matches matches) {
 		super();
 		this.players = players;
 		this.matches = matches;
 	}
 
-	public Players getPlayers() {
+	public Player getPlayers() {
 		return players;
 	}
 
-	public void setPlayers(Players players) {
+	public void setPlayers(Player players) {
 		this.players = players;
 	}
 

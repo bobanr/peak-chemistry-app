@@ -1,7 +1,7 @@
 package com.pca.repository;
 
-import com.pca.domain.Players;
+import com.pca.domain.Player;
 
-public interface PlayerRepository extends JpaSpecificationRepository<Players>{
+public interface PlayerRepository extends JpaSpecificationRepository<Player>{
 
 }
