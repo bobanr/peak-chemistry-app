@@ -19,7 +19,7 @@
                 <div class="form-group">
                     <label translate="player.firstName">First name</label>
                     <input type="text" class="form-control" name="firstName" placeholder="{{'player.firstName' | translate}}"
-                           ng-model="player.firstName" ng-minlength=1 ng-maxlength=50 required>
+                           ng-model="players.firstName" ng-minlength=1 ng-maxlength=50 required>
                     <div class="error"
                          ng-show="form.login.$dirty && form.login.$invalid">
                         <small class="error"
@@ -39,7 +39,7 @@
                 <div class="form-group">
                     <label translate="player.lastName">Last name</label>
                     <input type="text" class="form-control" name="lastName" placeholder="{{'player.lastName' | translate}}"
-                           ng-model="player.lastName" ng-minlength=1 ng-maxlength=50 required>
+                           ng-model="players.lastName" ng-minlength=1 ng-maxlength=50 required>
                   <div class="error"
                          ng-show="form.login.$dirty && form.login.$invalid">
                         <small class="error"
@@ -59,7 +59,7 @@
                  <div class="form-group">
                     <label translate="player.nationality">Nationality</label>
                     <input type="text" class="form-control" name="nationality" placeholder="{{'player.nationality' | translate}}"
-                           ng-model="player.nationality" ng-minlength=1 ng-maxlength=50 required>
+                           ng-model="players.nationality" ng-minlength=1 ng-maxlength=50 required>
                     <div class="error"
                          ng-show="form.login.$dirty && form.login.$invalid">
                         <small class="error"
@@ -79,7 +79,7 @@
                 <div class="form-group">
                     <label translate="player.bodyColor">Body of color</label>
                     <input type="text" class="form-control" name="bodyColor" placeholder="{{'player.bodyColor' | translate}}"
-                           ng-model="player.bodyColor" ng-minlength=1 ng-maxlength=50 required>
+                           ng-model="players.bodyColor" ng-minlength=1 ng-maxlength=50 required>
                    <div class="error"
                          ng-show="form.login.$dirty && form.login.$invalid">
                         <small class="error"
@@ -98,8 +98,8 @@
                 </div>
                   <div class="form-group">
                     <label translate="player.dateOfBorn">Date of born</label>
-                    <input type="text" class="form-control" name="dateOfBorn" placeholder="{{'player.dateOfBorn' | translate}}"
-                           ng-model="player.dateOfBorn" required>
+                    <input type="date" class="form-control" name="dateOfBorn" placeholder="{{'player.dateOfBorn' | translate}}"
+                           ng-model="players.dateOfBorn" required>
                     <div class="error"
                          ng-show="form.login.$dirty && form.login.$invalid">
                         <small class="error"
@@ -119,7 +119,7 @@
                 <div class="form-group">
                     <label translate="player.placeOfBorn">Place of born</label>
                     <input type="text" class="form-control" name="placeOfBorn" placeholder="{{'player.placeOfBorn' | translate}}"
-                           ng-model="player.placeOfBorn" ng-minlength=1 ng-maxlength=50 required>
+                           ng-model="players.placeOfBorn" ng-minlength=1 ng-maxlength=50 required>
                      <div class="error"
                          ng-show="form.login.$dirty && form.login.$invalid">
                         <small class="error"
@@ -139,7 +139,7 @@
                  <div class="form-group">
                     <label translate="player.countryOfBorn">Country of born</label>
                     <input type="text" class="form-control" name="countryOfBorn" placeholder="{{'player.countryOfBorn' | translate}}"
-                           ng-model="player.countryOfBorn" ng-minlength=1 ng-maxlength=50 required>
+                           ng-model="players.countryOfBorn" ng-minlength=1 ng-maxlength=50 required>
                     <div class="error"
                          ng-show="form.login.$dirty && form.login.$invalid">
                         <small class="error"
@@ -159,7 +159,7 @@
                <div class="form-group">
                     <label translate="player.positionInTeam">Position in team</label>
                     <input type="text" class="form-control" name="positionInTeam" placeholder="{{'player.positionInTeam' | translate}}"
-                           ng-model="player.positionInTeam" ng-minlength=1 ng-maxlength=50 required>
+                           ng-model="players.positionInTeam" ng-minlength=1 ng-maxlength=50 required>
                      <div class="error"
                          ng-show="form.login.$dirty && form.login.$invalid">
                         <small class="error"
@@ -184,7 +184,7 @@
 						</tr>
 						<tr>
 							<td><input type="number" class="form-control" name="shirtNumber" placeholder="{{'player.shirtNumber' | translate}}"
-                           ng-model="player.shirtNumber" ng-minlength=1 ng-maxlength=5 required>
+                           ng-model="players.shirtNumber" ng-minlength=1 ng-maxlength=5 required>
 
 								 <div class="error"
                          ng-show="form.login.$dirty && form.login.$invalid">
@@ -202,8 +202,8 @@
                         </small>
                     </div>
                     </td>
-						<td><input type="text" class="form-control" name="yearInTeam" placeholder="{{'player.yearInTeam' | translate}}"
-                           ng-model="player.yearInTeam" ng-minlength=1 ng-maxlength=50 required>
+						<td><input type="number" class="form-control" name="yearInTeam" placeholder="{{'player.yearInTeam' | translate}}"
+                           ng-model="players.yearInTeam" ng-minlength=1 ng-maxlength=50 required>
 								 <div class="error"
                          ng-show="form.login.$dirty && form.login.$invalid">
                         <small class="error"

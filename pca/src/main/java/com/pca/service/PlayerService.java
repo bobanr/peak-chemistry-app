@@ -1,7 +1,7 @@
 package com.pca.service;
 
-import com.pca.domain.Players;
+import com.pca.domain.Player;
 
-public interface PlayerService extends DefaultModelCrudService<Players>{
+public interface PlayerService extends DefaultModelCrudService<Player>{
 
 }
