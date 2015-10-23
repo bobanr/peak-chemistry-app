@@ -42,6 +42,9 @@
             "email": "E-mail",
             "email.placeholder": "Your e-mail"
         },
+        "pagination":{
+        "page":"Page"
+        },
         "messages": {
             "info": {
                 "authenticated": "If you want to <a href=\"#/login\">authenticate</a>, you can try the default accounts:<br/>- Administrator (login=\"admin\" and password=\"admin\") <br/>- User (login=\"user\" and password=\"user\").",
@@ -322,7 +325,11 @@
     "countryOfBorn":"Country of born",
     "shirtNumber": "Shirt number",
     "yearInTeam":"Year in team",
-    "positionInTeam":"Position in team"  
+    "positionInTeam":"Position in team",
+    "addPlayerBtn":"Add Player",
+    "removedSuccess":"<strong>Player removed!</strong>", 
+    "removedError":"Player cannot be removed.",
+    "deleteButton":"Delete"
     },
     "footer": "This is your footer"
 }

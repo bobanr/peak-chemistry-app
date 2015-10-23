@@ -76,6 +76,13 @@ pcaApp
                         authorizedRoles: [USER_ROLES.all]
                     }
                 })
+                 .when('/players', {
+                    templateUrl: 'views/players.html',
+                    controller: 'PlayersController',
+                    access: {
+                        authorizedRoles: [USER_ROLES.all]
+                    }
+                })
                 .when('/logs', {
                     templateUrl: 'views/logs.html',
                     controller: 'LogsController',

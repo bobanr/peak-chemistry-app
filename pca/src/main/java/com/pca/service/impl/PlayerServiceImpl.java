@@ -2,7 +2,6 @@ package com.pca.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.pca.domain.Player;
 import com.pca.repository.PlayerRepository;
 import com.pca.service.PlayerService;
@@ -17,6 +16,5 @@ public class PlayerServiceImpl extends DefaultModelCrudServiceImpl<Player, Playe
 	protected PlayerRepository getRepository() {
 		// TODO Auto-generated method stub
 		return playerRepository;
-	}
-
+	}	
 }

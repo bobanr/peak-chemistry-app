@@ -1,0 +1,60 @@
+<div>
+	<table width="100%">
+		<tr>
+			<td width="30%"><h2 translate="player.title">Customers</h2></td>
+
+			<td><a href="#/player"><button type="submit"
+						class="btn btn-success" style="float: right; width: 175px;">
+						<span class="glyphicon glyphicon-plus" /> <span
+							translate="player.addPlayerBtn" />
+					</button></a></td>
+		</tr>
+	</table>
+	<br />	
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<div class="alert alert-success" ng-show="success"
+				translate="player.removedSuccess">
+				<strong>Player removed</strong>
+			</div>
+			<div class="alert alert-danger" ng-show="error"
+				translate="player.removedError">
+				<strong>Player cannot be removed.</strong>
+			</div>		
+			<thead>
+				<tr>
+					<th width="25%"><label translate="player.firstName">Name</label></th>
+					<th width="20%"><label
+						translate="player.lastName">Last Name</label></th>
+					<th width="20%"><label translate="player.nationality">Nationality</label></th>
+					<th width="35%"></th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="player in players">
+					<td>{{player.firstName}}</td>
+					<td>{{player.lastName}}</td>
+					<td>{{player.nationality}}</td>
+					<td align="right">						
+						<button type="submit" class="btn btn-danger"
+							ng-click="confirmClick() && deletePlayer(player.id)"
+							confirm-click translate="player.deleteButton">Delete</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="text-center" ng-hide="hidePagination">
+			<pagination total-items="totalItems" ng-model="currentPage"
+				ng-change="pageChanged()" items-per-page="itemsPerPage"
+				previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;"
+				last-text="&raquo;" boundary-links="true" max-size="maxSize"
+				num-pages="numPages" />
+			<div class="paginationDetails">
+				<label translate="global.pagination.page">Page:</label>
+				{{currentPage}} / {{numPages}}
+			</div>
+		</div>
+	</div>
+</div>
+

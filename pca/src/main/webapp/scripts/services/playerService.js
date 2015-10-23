@@ -6,6 +6,10 @@ pcaApp.factory('PlayerService', function($resource) {
 			url: 'app/rest/player/paged',
 			method : 'GET',
 			isArray: false
-		}		
+		},
+		get : {
+			method : 'GET',
+			isArray : false
+		}
 	});
 });
