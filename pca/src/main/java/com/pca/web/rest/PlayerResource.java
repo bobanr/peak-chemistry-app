@@ -28,14 +28,18 @@ import com.pca.web.util.RequestProcessor;
 
 @Controller
 @RequestMapping("/app/rest/player")
-public class PlayerResource {
+public class PlayerResource extends CrudResource<Player, PlayerService>{
 
 	@Autowired
 	private PlayerService playerService;
 	
+	@Override
+	public PlayerService getService() {
+		// TODO Auto-generated method stub
+		return playerService;
+	}
 	
-	
-	@RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	/*@RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Player> saveOrUpdate(@RequestBody @Valid Player player, HttpServletResponse response) {
 		playerService.saveAndFlush(player);
 		return new ResponseEntity<>(player, HttpStatus.OK);
@@ -54,5 +58,7 @@ public class PlayerResource {
 	        Pageable pageable = new PageRequest(page - 1, count, sort);
 	        return playerService.findAll(pageable);
 	    }
+*/
+	
 
 }

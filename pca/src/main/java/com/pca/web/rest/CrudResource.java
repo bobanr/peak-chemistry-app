@@ -12,16 +12,21 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.pca.domain.DefaultModel;
+import com.pca.domain.Player;
 import com.pca.service.DefaultModelCrudService;
 import com.pca.web.util.RequestProcessor;
 
+@RestController
 public abstract class CrudResource<T extends DefaultModel, S extends DefaultModelCrudService<T>> {
 
     public abstract S getService();
@@ -40,7 +45,8 @@ public abstract class CrudResource<T extends DefaultModel, S extends DefaultMode
     @RequestMapping(method = RequestMethod.POST, produces = "application/json")
     public T create(@RequestBody @Valid T entity, HttpServletRequest request, HttpServletResponse response) {
         beforeSave(entity);
-        return getService().saveAndFlush(entity);
+       getService().saveAndFlush(entity);
+       return entity;
     }
 
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
