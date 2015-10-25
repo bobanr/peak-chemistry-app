@@ -26,7 +26,6 @@ import com.pca.domain.Player;
 import com.pca.service.DefaultModelCrudService;
 import com.pca.web.util.RequestProcessor;
 
-@RestController
 public abstract class CrudResource<T extends DefaultModel, S extends DefaultModelCrudService<T>> {
 
     public abstract S getService();

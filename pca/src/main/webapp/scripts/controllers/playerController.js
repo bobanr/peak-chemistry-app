@@ -3,9 +3,17 @@
 pcaApp.controller('PlayerController', [ '$scope','$routeParams','$rootScope','$translate', 'PlayerService',
 		function($scope, $routeParams,$rootScope,$translate, PlayerService) {
 
-	var playerId = $routeParams.id;
-    $scope.player = PlayerService.get({id:playerId});
-	
+	if ($routeParams.id) {
+		$scope.id = $routeParams.id;
+		$scope.player = PlayerService
+				.get(
+						{
+							id : $routeParams.id
+						},
+						function() {
+							var a = 1;
+						});
+	} 		
 	$scope.success = null;
     $scope.error = null;
     $scope.savePlayer = function () {
