@@ -315,7 +315,7 @@
         "403": "You are not authorized to access the page."
     },
     "player":{
-    "title":"Player",
+    "title":"Players",
     "firstName":"First name",
     "lastName":"Last name",
     "nationality":"Nationality",
