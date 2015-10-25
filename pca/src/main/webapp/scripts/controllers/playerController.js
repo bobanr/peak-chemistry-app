@@ -17,7 +17,7 @@ pcaApp.controller('PlayerController', [ '$scope','$routeParams','$rootScope','$t
 	$scope.success = null;
     $scope.error = null;
     $scope.savePlayer = function () {
-    	PlayerService.save($scope.players,
+    	PlayerService.save($scope.player,
                 function (value, responseHeaders) {
                     $scope.error = null;
                     $scope.success = 'OK';
