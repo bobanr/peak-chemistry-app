@@ -329,7 +329,8 @@
     "addPlayerBtn":"Add Player",
     "removedSuccess":"<strong>Player removed!</strong>", 
     "removedError":"Player cannot be removed.",
-    "deleteButton":"Delete"
+    "deleteButton":"Delete",
+    "viewButton":"View"
     },
     "footer": "This is your footer"
 }

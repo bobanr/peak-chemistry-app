@@ -1,8 +1,11 @@
 'use strict';
 
-pcaApp.controller('PlayerController', [ '$scope','$rootScope','$translate', 'PlayerService',
-		function($scope, $rootScope,$translate, PlayerService) {
+pcaApp.controller('PlayerController', [ '$scope','$routeParams','$rootScope','$translate', 'PlayerService',
+		function($scope, $routeParams,$rootScope,$translate, PlayerService) {
 
+	var playerId = $routeParams.id;
+    $scope.player = PlayerService.get({id:playerId});
+	
 	$scope.success = null;
     $scope.error = null;
     $scope.savePlayer = function () {
@@ -10,6 +13,7 @@ pcaApp.controller('PlayerController', [ '$scope','$rootScope','$translate', 'Pla
                 function (value, responseHeaders) {
                     $scope.error = null;
                     $scope.success = 'OK';
+                    $scope.player = PlayerService.get({id:playerId});
                 },
                 function (httpResponse) {
                     $scope.success = null;

@@ -36,9 +36,13 @@
 					<td>{{player.firstName}}</td>
 					<td>{{player.lastName}}</td>
 					<td>{{player.nationality}}</td>
-					<td align="right">						
+					<td align="right">	
+					<a href="#/player/{{player.id}}">
+							<button type="submit" class="btn btn-primary" ng-click=""
+								translate="player.viewButton">View</button>
+					</a>					
 						<button type="submit" class="btn btn-danger"
-							ng-click="confirmClick() && deletePlayer(player.id)"
+							ng-click="deletePlayer(player.id)"
 							confirm-click translate="player.deleteButton">Delete</button>
 					</td>
 				</tr>

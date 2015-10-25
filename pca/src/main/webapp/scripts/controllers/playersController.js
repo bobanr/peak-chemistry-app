@@ -1,8 +1,10 @@
 'use strict';
 
-pcaApp.controller('PlayersController', [ '$scope','$rootScope','$translate', 'PlayerService',
-		function($scope, $rootScope,$translate, PlayerService) {
-
+pcaApp.controller('PlayersController', [ '$scope','$rootScope','$routeParams','$translate', 'PlayerService',
+		function($scope, $rootScope,$routeParams,$translate, PlayerService) {
+	
+   
+	
 	$scope.currentPage = 1;
 	$scope.itemsPerPage = 10;
 	$scope.maxSize = 15;
