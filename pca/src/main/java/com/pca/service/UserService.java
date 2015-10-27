@@ -1,28 +1,30 @@
 package com.pca.service;
 
-import com.pca.domain.Authority;
-import com.pca.domain.PersistentToken;
-import com.pca.domain.User;
-import com.pca.repository.AuthorityRepository;
-import com.pca.repository.PersistentTokenRepository;
-import com.pca.repository.UserRepository;
-import com.pca.security.SecurityUtils;
-import com.pca.service.util.RandomUtil;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import javax.inject.Inject;
 
 import org.joda.time.LocalDate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.inject.Inject;
-
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import com.pca.domain.Authority;
+import com.pca.domain.PersistentToken;
+import com.pca.domain.User;
+import com.pca.domain.UserPermission;
+import com.pca.repository.AuthorityRepository;
+import com.pca.repository.PersistentTokenRepository;
+import com.pca.repository.UserPermissionRepository;
+import com.pca.repository.UserRepository;
+import com.pca.security.SecurityUtils;
 
 /**
  * Service class for managing users.
@@ -44,6 +46,9 @@ public class UserService {
 
     @Inject
     private AuthorityRepository authorityRepository;
+    
+	@Autowired
+	private UserPermissionRepository userPermissionRepository;
 
     public User activateRegistration(String key) {
 //        log.debug("Activating user for activation key {}", key);
@@ -61,7 +66,7 @@ public class UserService {
     public User createUserInformation(String login, String password, String firstName, String lastName, String email,
                                       String langKey) {
         User newUser = new User();
-        Authority authority = authorityRepository.findOne("ROLE_USER");
+        Authority authority = authorityRepository.findAutorityByName("ROLE_USER");
         Set<Authority> authorities = new HashSet<Authority>();
         String encryptedPassword = passwordEncoder.encode(password);
         newUser.setLogin(login);
@@ -72,9 +77,15 @@ public class UserService {
         newUser.setEmail(email);
         // new user is not active
         // new user gets registration key
-        authorities.add(authority);
-        newUser.setAuthorities(authorities);
         userRepository.save(newUser);
+		authorities.add(authority);
+		// newUser.setAuthorities(authorities);
+
+		userRepository.save(newUser);
+		UserPermission up = new UserPermission();
+		up.setAuthority(authority);
+		up.setUser(newUser);
+		userPermissionRepository.save(up);
         log.debug("Created Information for User: {}", newUser);
         return newUser;
     }

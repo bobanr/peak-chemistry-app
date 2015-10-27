@@ -76,9 +76,9 @@ public class AccountResource {
         } else {
             user = userService.createUserInformation(userDTO.getLogin(), userDTO.getPassword(), userDTO.getFirstName(),
                     userDTO.getLastName(), userDTO.getEmail().toLowerCase(), userDTO.getLangKey());
-            final Locale locale = Locale.forLanguageTag("en");
-            String content = createHtmlContentFromTemplate(user, locale, request, response);
-            mailService.sendActivationEmail(user.getEmail(), content, locale);
+//            final Locale locale = Locale.forLanguageTag("en");
+//            String content = createHtmlContentFromTemplate(user, locale, request, response);
+//            mailService.sendActivationEmail(user.getEmail(), content, locale);
             return new ResponseEntity<>(HttpStatus.CREATED);
         }
     }
