@@ -401,6 +401,14 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
         
+        
+        <!-- Super CSV -->
+		<dependency>
+			<groupId>net.sf.supercsv</groupId>
+			<artifactId>super-csv</artifactId>
+			<version>2.3.1</version>
+		</dependency>
+
 
         <!-- Test dependencies -->
         <dependency>

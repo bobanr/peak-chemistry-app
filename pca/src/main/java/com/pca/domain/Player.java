@@ -124,4 +124,51 @@ public class Player extends DefaultModel implements Serializable{
 	public void setPositionInTeam(String positionInTeam) {
 		this.positionInTeam = positionInTeam;
 	}
+
+	public Player() {
+		super();
+		// TODO Auto-generated constructor stu
+	}
+
+	public Player(String firstName, String lastName, String nationality,
+			String bodyColor, Date dateOfBorn, String placeOfBorn,
+			String countryOfBorn, Long shirtNumber, Long yearInTeam,
+			String positionInTeam) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.nationality = nationality;
+		this.bodyColor = bodyColor;
+		this.dateOfBorn = dateOfBorn;
+		this.placeOfBorn = placeOfBorn;
+		this.countryOfBorn = countryOfBorn;
+		this.shirtNumber = shirtNumber;
+		this.yearInTeam = yearInTeam;
+		this.positionInTeam = positionInTeam;
+	}
+	
+	
+
+	public Player(String firstName, String lastName, String nationality,
+			String bodyColor, String placeOfBorn, String countryOfBorn) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.nationality = nationality;
+		this.bodyColor = bodyColor;
+		this.placeOfBorn = placeOfBorn;
+		this.countryOfBorn = countryOfBorn;
+	}
+
+	@Override
+	public String toString() {
+		return "Player [firstName=" + firstName + ", lastName=" + lastName
+				+ ", nationality=" + nationality + ", bodyColor=" + bodyColor
+				+ ", dateOfBorn=" + dateOfBorn + ", placeOfBorn=" + placeOfBorn
+				+ ", countryOfBorn=" + countryOfBorn + ", shirtNumber="
+				+ shirtNumber + ", yearInTeam=" + yearInTeam
+				+ ", positionInTeam=" + positionInTeam + "]";
+	}
+	
+	
 }

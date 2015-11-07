@@ -332,5 +332,9 @@
     "deleteButton":"Delete",
     "viewButton":"View"
     },
+    "statistics":{
+    "title":"Statistics",
+    "downloadCSV":"download CSV"
+    },
     "footer": "This is your footer"
 }

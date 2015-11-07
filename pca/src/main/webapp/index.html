@@ -46,6 +46,12 @@
                                 <span translate="player.title">Player</span>
                             </a>
                         </li>
+                         <li ng-switch-when="true">
+                            <a href="#/statistics">
+                                <span class="glyphicon glyphicon-home"></span>
+                                <span translate="statistics.title">Statistics</span>
+                            </a>
+                        </li>
                         <li class="dropdown pointer">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:;">
                                 <span>
@@ -165,6 +171,7 @@
         <!-- Controllers -->
         <script src="scripts/controllers/playerController.js"></script>
          <script src="scripts/controllers/playersController.js"></script>
+         <script src="scripts/controllers/StatisticsController.js"></script>
         <!-- Services -->
         <script src="scripts/services/playerService.js"></script>
         <!-- endbuild -->

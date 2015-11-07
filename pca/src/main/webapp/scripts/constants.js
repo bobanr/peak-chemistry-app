@@ -22,3 +22,6 @@ pcaApp.constant('FLAGS', {
         ru: 'ru',
         tr: 'tr'
     });
+pcaApp.constant('CONTEXT', {
+    name: '/pca',
+});
