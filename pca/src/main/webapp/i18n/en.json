@@ -334,7 +334,8 @@
     },
     "statistics":{
     "title":"Statistics",
-    "downloadCSV":"download CSV"
+    "downloadCSVByName":"CSV by Name ",
+    "downloadCSVByShirtNumber":"CSV By Shirt Number"
     },
     "footer": "This is your footer"
 }

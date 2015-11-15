@@ -1,11 +1,16 @@
 'use strict';
 
-pcaApp.controller('StatisticsController', [ '$scope','CONTEXT',
+pcaApp.controller('StatisticsController', [ '$scope',
 		function($scope, CONTEXT) {
 
-	$scope.downloadCSV = function() {
-		window.open(CONTEXT.name
-				+ '/app/rest/downloadCSV');
+	$scope.downloadCSVByName = function() {
+		window.open(
+				'/app/rest/downloadCSVByName');
+	};
+	
+	$scope.downloadCSVByShirtNumber = function() {
+		window.open(
+				'/app/rest/downloadCSVByShirtNumber');
 	};
 	
 }]);
