@@ -3,6 +3,8 @@ package com.pca.repository;
 import com.pca.domain.User;
 
 import org.joda.time.LocalDate;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -19,6 +21,7 @@ public interface UserRepository extends JpaRepository<User, String> {
     List<User> findNotActivatedUsersByCreationDateBefore(Date date);
     
     @Query("select u from User u where u.login = ?1")
-    User findUserByLogin(String login);    
-
+    User findUserByLogin(String login);  
+    
+   
 }

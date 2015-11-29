@@ -3,76 +3,144 @@ package com.pca.web.rest.dto;
 import java.util.List;
 
 public class UserDTO {
+	
+	private long id;
+	
+	private String login;
 
-    private String login;
-    
-    private String password;
-    
-    private String firstName;
-    
-    private String lastName;
-    
-    private String email;
-    
-    private String langKey;
+	private String password;
 
-    private List<String> roles;
+	private String firstName;
 
-    public UserDTO() {
-    }
+	private String lastName;
 
-    public UserDTO(String login, String password, String firstName, String lastName, String email, String langKey,
-                   List<String> roles) {
-        this.login = login;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.langKey = langKey;
-        this.roles = roles;
-    }
+	private String email;
 
-    public String getPassword() {
-        return password;
-    }
+	private String langKey;
 
-    public String getLogin() {
-        return login;
-    }
+	private List<String> roles;
 
-    public String getFirstName() {
-        return firstName;
-    }
+	private Boolean active;
 
-    public String getLastName() {
-        return lastName;
-    }
+	private Boolean hasAuthory;
 
-    public String getEmail() {
-        return email;
-    }
+	public UserDTO() {
+	}
 
-    public String getLangKey() {
-        return langKey;
-    }
+	public UserDTO(long id,String login, String password, String firstName,
+			String lastName, String email, String langKey, Boolean active,
+			List<String> roles, Boolean hasAuthory) {
+		super();
+		this.id = id;
+		this.login = login;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.langKey = langKey;
+		this.active = active;
+		this.roles = roles;
+		this.hasAuthory = hasAuthory;
+	}
 
-    public List<String> getRoles() {
-        return roles;
-    }
+	public String getLogin() {
+		return login;
+	}
 
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("UserDTO{");
-        sb.append("login='").append(login).append('\'');
-        if(password != null) {
-            sb.append(", password='").append(password.length()).append('\'');
-        }
-        sb.append(", firstName='").append(firstName).append('\'');
-        sb.append(", lastName='").append(lastName).append('\'');
-        sb.append(", email='").append(email).append('\'');
-        sb.append(", langKey='").append(langKey).append('\'');
-        sb.append(", roles=").append(roles);
-        sb.append('}');
-        return sb.toString();
-    }
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public long getId() {
+		return id;
+	}
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getLangKey() {
+		return langKey;
+	}
+
+	public void setLangKey(String langKey) {
+		this.langKey = langKey;
+	}
+
+	public List<String> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<String> roles) {
+		this.roles = roles;
+	}
+
+	public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+
+	public Boolean getHasAuthory() {
+		return hasAuthory;
+	}
+
+	public void setHasAuthory(Boolean hasAuthory) {
+		this.hasAuthory = hasAuthory;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("UserDTO [login=");
+		builder.append(login);
+		builder.append(", password=");
+		builder.append(password);
+		builder.append(", firstName=");
+		builder.append(firstName);
+		builder.append(", lastName=");
+		builder.append(lastName);
+		builder.append(", email=");
+		builder.append(email);
+		builder.append(", langKey=");
+		builder.append(langKey);
+		builder.append(", roles=");
+		builder.append(roles);
+		builder.append(", active=");
+		builder.append(active);
+		builder.append(", hasAuthory=");
+		builder.append(hasAuthory);
+		builder.append("]");
+		return builder.toString();
+	}
+
 }

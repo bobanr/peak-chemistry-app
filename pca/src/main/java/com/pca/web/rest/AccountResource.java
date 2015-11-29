@@ -126,17 +126,17 @@ public class AccountResource {
             roles.add(authority.getName());
         }
         return new ResponseEntity<>(
-            new UserDTO(
-                user.getLogin(),
-                null,
-                user.getFirstName(),
-                user.getLastName(),
-                user.getEmail(),
-                "en",
-                roles),
-            HttpStatus.OK);
+                new UserDTO(user.getId(),user.getLogin(), 
+                		null, 
+                		user.getFirstName(), 
+                		user.getLastName(), 
+                		user.getEmail(), 
+                		null, 
+                		user.getActive(), 
+                		roles, 
+                		user.getHasAuthority()),
+                HttpStatus.OK);
     }
-
     /**
      * POST  /rest/account -> update the current user information.
      */

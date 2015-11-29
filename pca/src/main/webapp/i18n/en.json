@@ -40,7 +40,9 @@
             "confirmpassword": "New password confirmation",
             "confirmpassword.placeholder": "Confirm the new password",
             "email": "E-mail",
-            "email.placeholder": "Your e-mail"
+            "email.placeholder": "Your e-mail",
+            "active": "Activate user",
+            "hasAuthority":"Has authority"
         },
         "pagination":{
         "page":"Page"
@@ -337,5 +339,25 @@
     "downloadCSVByName":"CSV by Name ",
     "downloadCSVByShirtNumber":"CSV By Shirt Number"
     },
+     "users":{
+              "title":"Users",
+              "table": {
+              	 	"firstName":"First name",
+               		"lastName":"Last name",
+              		"viewButton":"View",
+              		"username":"Username",
+              		"active":"Active",
+             		"deleteButton":"Delete",
+             		"email":"Email",
+             		"createUser":"Create new user",
+             		"print":"Print"
+              },
+             "messages": {
+              		 "removedSuccess":"<strong>User removed.</strong>",
+              		 "removedError":"<strong>User cannot be removed</strong>",
+              		 "removedPurchaseError":"<strong>The User cannot be deleted.</strong>",
+              		 "confirmMessage":"Are you sure you want to delete this customer?"
+             }   
+    },    
     "footer": "This is your footer"
 }

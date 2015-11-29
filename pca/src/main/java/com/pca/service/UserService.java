@@ -112,7 +112,7 @@ public class UserService {
         User currentUser = userRepository.findUserByLogin(SecurityUtils.getCurrentLogin());
         currentUser.getAuthorities().size(); // eagerly load the association
         return currentUser;
-    }
+    }     
 
     /**
      * Persistent Token are used for providing automatic authentication, they should be automatically deleted after

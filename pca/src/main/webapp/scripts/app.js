@@ -83,6 +83,20 @@ pcaApp
                         authorizedRoles: [USER_ROLES.all]
                     }
                 })
+                .when('/manager/:id?', {
+                    templateUrl: 'views/user.html',
+                    controller: 'UserController',
+                    access: {
+                        authorizedRoles: [USER_ROLES.all]
+                    }
+                })
+                 .when('/managers', {
+                    templateUrl: 'views/users.html',
+                    controller: 'UsersController',
+                    access: {
+                        authorizedRoles: [USER_ROLES.all]
+                    }
+                })
                 .when('/teams', {
                     templateUrl: 'views/teams.html',
                     controller: 'TeamsController',
