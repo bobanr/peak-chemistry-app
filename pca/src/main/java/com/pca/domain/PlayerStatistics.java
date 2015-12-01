@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table (name = "PCA_PLAYER_STATISTICS")
 public class PlayerStatistics extends DefaultModel implements Serializable{
 	
 	@Column(name = "GOAL")
