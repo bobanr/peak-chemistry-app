@@ -209,7 +209,7 @@ pcaApp.factory('AuthenticationSharedService', ['$rootScope', '$http', 'authServi
                 $rootScope.authenticationError = false;
                 $rootScope.authenticated = false;
                 $rootScope.account = null;
-
+                $rootScope.logout = null;
                 $http.get('app/logout');
                 Session.invalidate();
                 authService.loginCancelled();

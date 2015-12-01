@@ -20,7 +20,7 @@ pcaApp.controller('UserController', ['$scope', '$routeParams','$translate', 'Use
             $scope.doNotMatch = "ERROR";
         } else {
         	if(userId != null) {                         
-            	UserService.update($scope.user,
+            	UserService.save($scope.user,
                         function (value, responseHeaders) {
                             $scope.error = null;
                             $scope.errorUserExists = null;
@@ -40,7 +40,7 @@ pcaApp.controller('UserController', ['$scope', '$routeParams','$translate', 'Use
             } else {
             	 $scope.user.langKey = $translate.use();
                  $scope.doNotMatch = null;
-            	 UserService.saveManager($scope.user,
+            	 UserService.save($scope.user,
                         function (value, responseHeaders) {
                             $scope.error = null;
                             $scope.errorUserExists = null;

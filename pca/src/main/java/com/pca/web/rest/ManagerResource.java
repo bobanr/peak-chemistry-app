@@ -28,7 +28,7 @@ public class ManagerResource {
 	@Autowired
 	private ManagerService managerService;
 
-	@RequestMapping(value = ("/saveManager"), method = RequestMethod.POST, produces = "application/json")
+	@RequestMapping(method = RequestMethod.POST, produces = "application/json")
 	public void create(@RequestBody @Valid UserDTO userDTO,
 			HttpServletRequest request, HttpServletResponse response) {
 		String username = userDTO.getLogin();

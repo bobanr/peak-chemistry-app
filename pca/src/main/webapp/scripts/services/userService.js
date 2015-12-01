@@ -16,10 +16,6 @@ pcaApp.factory('UserService', function($resource) {
 			url: 'app/rest/manager/update',
 			method : 'POST'
 		},
-		saveManager : {
-			url: 'app/rest/manager/saveManager',
-			method : 'POST'
-		},
 		remove : {
 			url: 'app/rest/manager/:id',
 			method : 'DELETE'
