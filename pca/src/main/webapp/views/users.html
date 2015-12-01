@@ -1,0 +1,80 @@
+<div>
+	<table width="100%">
+		<tr>
+			<td width="30%"><h2 translate="users.title"
+					translate-values="{username: '{{account.login}}'}">Users</h2></td>
+
+			<td><a href="#/manager"><button type="submit"
+						class="btn btn-primary" ng-click="" style="float: right;">
+						<span class="glyphicon glyphicon-flash" /> <span
+							translate="users.table.createUser" />
+					</button></a></td>
+		</tr>
+	</table>
+
+	<br />
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<div class="alert alert-success" ng-show="success"
+				translate="users.messages.removedSuccess">
+				<strong>User removed!</strong>
+			</div>
+			<div class="alert alert-danger" ng-show="error"
+				translate="users.messages.error.removedError">
+				<strong>User cannot be removed.</strong>
+			</div>
+			<div class="alert alert-danger" ng-show="error1"
+				translate="users.messages.error.removedUserError">
+				<strong>The User cannot be deleted.</strong>
+			</div>
+			<div class="alert alert-danger" ng-show="errorNoData"
+				translate="users.messages.error.errorNoData">
+				<strong>No user</strong>
+			</div>
+			<thead>
+				<tr>
+					<th width="15%" translate="global.form.username">Username</th>
+					<th width="15%" translate="users.table.firstName">First name</th>
+					<th width="15%" translate="users.table.lastName">Last name</th>
+					<th width="20%" translate="global.form.email">Email</th>
+					<th width="20%" translate="global.form.hasAuthority">Email</th>
+					<th width="10%" translate="users.table.active">Active</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="user in users">
+					<td>{{user.login}}</td>
+					<td>{{user.firstName}}</td>
+					<td>{{user.lastName}}</td>
+					<td>{{user.email}}</td>
+					<td>{{user.hasAuthority}}</td>					
+					<td>{{user.active}}</td>
+					<td align="right">
+					
+			 <a href="#/manager/{{user.id}}" style="color: black;text-decoration:none">
+                 <button type="submit" class="btn btn-default btn-in-row" ng-click="" data-placement="top" data-content="users.table.editButton" data-toggle="popover" data-trigger="hover">
+                   <span style="color: #428bca;" class="glyphicon glyphicon-eye-open"></span>
+                </button>
+             </a>					                     						
+               <button style="margin-left:5px;" type="submit" class="btn btn-default btn-in-row"
+                       ng-click="deleteUser(user.id)" confirm-click data-placement="top" data-content="users.table.deleteButton" data-toggle="popover" data-trigger="hover">
+                 <span style="color: #d43f3a;" class="glyphicon glyphicon-remove-circle"></span>
+               </button>
+            </td>	
+		</tr>
+			</tbody>
+		</table>
+		<div class="text-center" ng-hide="hidePagination">
+			<pagination total-items="totalItems" ng-model="currentPage"
+				ng-change="pageChanged()" items-per-page="itemsPerPage"
+				previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;"
+				last-text="&raquo;" boundary-links="true" max-size="maxSize"
+				num-pages="numPages" />
+			<div class="paginationDetails">
+				<label translate="global.pagination.page">Page:</label>
+				{{currentPage}} / {{numPages}}
+			</div>
+		</div>
+	</div>
+</div>
