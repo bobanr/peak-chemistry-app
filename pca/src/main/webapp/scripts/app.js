@@ -73,14 +73,14 @@ pcaApp
                     templateUrl: 'views/player.html',
                     controller: 'PlayerController',
                     access: {
-                        authorizedRoles: [USER_ROLES.all]
+                        authorizedRoles: [USER_ROLES.user]
                     }
                 })
                  .when('/players', {
                     templateUrl: 'views/players.html',
                     controller: 'PlayersController',
                     access: {
-                        authorizedRoles: [USER_ROLES.all]
+                        authorizedRoles: [USER_ROLES.user]
                     }
                 })
                 .when('/manager/:id?', {
@@ -108,7 +108,7 @@ pcaApp
                     templateUrl: 'views/statistics.html',
                     controller: 'StatisticsController',
                     access: {
-                        authorizedRoles: [USER_ROLES.all]
+                        authorizedRoles: [USER_ROLES.user]
                     }
                 })
                 .when('/logs', {

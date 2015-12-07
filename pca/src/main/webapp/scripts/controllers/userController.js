@@ -4,11 +4,11 @@ pcaApp.controller('UserController', ['$scope', '$routeParams','$translate', 'Use
                                      function ($scope, $routeParams,$translate, UserService) {
 	
 	var userId = $routeParams.id;
-	/*$scope.hidePassword = true;
+	$scope.hidePassword = true;
 	if(userId != null) {
 		$scope.hidePassword = false;
 		$scope.user = UserService.get({id:userId});
-	}*/
+	}
     
     
     $scope.success = null;

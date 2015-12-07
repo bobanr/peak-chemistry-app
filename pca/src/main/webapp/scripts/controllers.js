@@ -2,8 +2,15 @@
 
 /* Controllers */
 
-pcaApp.controller('MainController', ['$scope',
-    function ($scope) {
+pcaApp.controller('MainController', ['$scope','$rootScope','$location',
+    function ($scope,$rootScope,$location) {
+	
+	$scope.isActive = function (viewLocation) { 
+    	var path = $location.path();
+    	var isActive = viewLocation === path;
+        return isActive;
+    };
+	
     }]);
 
 pcaApp.controller('AdminController', ['$scope',
