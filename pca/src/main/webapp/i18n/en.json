@@ -33,15 +33,15 @@
             "tr": "Turkish"
         },
         "form": {
-            "username": "Login",
-            "username.placeholder": "Your login",
+            "username": "Username",
+            "username.placeholder": "Your username",
             "newpassword": "New password",
             "newpassword.placeholder": "New password",
             "confirmpassword": "New password confirmation",
             "confirmpassword.placeholder": "Confirm the new password",
             "email": "E-mail",
             "email.placeholder": "Your e-mail",
-            "active": "Activate user",
+            "active": "Activate manager",
             "hasAuthority":"Has authority"
         },
         "pagination":{
@@ -332,7 +332,20 @@
     "removedSuccess":"<strong>Player removed!</strong>", 
     "removedError":"Player cannot be removed.",
     "deleteButton":"Delete",
-    "viewButton":"View"
+    "viewButton":"View",
+    "white":"White",
+    "black":"Black",
+    "yellow":"Yellow",
+    "goalkeeper":"Goalkeeper - GK",
+    "centralDefender":"Central Defender - CD",
+    "leftBack":"Left Back - LB",
+    "rightBack":"Right Back - RB",
+    "defendingMidfielder":"Defending Midfielder - DM",
+    "centralMidfielder":"Central Midfielder - CM",
+    "attackingMidfielder":"Attacking Midfielder - AM",
+    "wideMidfielders":"Wide Midfielders - WM",
+    "wideForward":"Wide Forward - WF",
+    "centerForward":"Center Forward - CF"
     },
     "statistics":{
     "title":"Statistics",
@@ -340,7 +353,7 @@
     "downloadCSVByShirtNumber":"CSV By Shirt Number"
     },
      "users":{
-              "title":"Users",
+              "title":"Managers",
               "table": {
               	 	"firstName":"First name",
                		"lastName":"Last name",
@@ -349,14 +362,14 @@
               		"active":"Active",
              		"deleteButton":"Delete",
              		"email":"Email",
-             		"createUser":"Create new user",
+             		"createUser":"Create new Manager",
              		"print":"Print"
               },
              "messages": {
-              		 "removedSuccess":"<strong>User removed.</strong>",
-              		 "removedError":"<strong>User cannot be removed</strong>",
-              		 "removedPurchaseError":"<strong>The User cannot be deleted.</strong>",
-              		 "confirmMessage":"Are you sure you want to delete this customer?"
+              		 "removedSuccess":"<strong>Manager removed.</strong>",
+              		 "removedError":"<strong>Manager cannot be removed</strong>",
+              		 "removedPurchaseError":"<strong>The Manager cannot be deleted.</strong>",
+              		 "confirmMessage":"Are you sure you want to delete?"
              }   
     },    
     "footer": "This is your footer"

@@ -4,8 +4,8 @@
 			<td width="30%"><h2 translate="player.title">Customers</h2></td>
 
 			<td><a href="#/player"><button type="submit"
-						class="btn btn-success" style="float: right; width: 175px;">
-						<span class="glyphicon glyphicon-plus" /> <span
+						class="btn btn-primary" style="float: right; width: 175px;">
+						<span class="glyphicon glyphicon-flash" /><span
 							translate="player.addPlayerBtn" />
 					</button></a></td>
 		</tr>
@@ -23,11 +23,13 @@
 			</div>		
 			<thead>
 				<tr>
-					<th width="25%"><label translate="player.firstName">Name</label></th>
-					<th width="20%"><label
-						translate="player.lastName">Last Name</label></th>
-					<th width="20%"><label translate="player.nationality">Nationality</label></th>
-					<th width="35%"></th>
+					<th width="15%"><label translate="player.firstName">Name</label></th>
+					<th width="15%"><label translate="player.lastName">Last Name</label></th>
+					<th width="15%"><label translate="player.nationality">Nationality</label></th>
+					<th width="13%"><label translate="player.bodyColor">Body of color</label></th>
+					<th width="20%"><label translate="player.positionInTeam">Position in team</label></th>
+					<th width="7%"><label translate="player.shirtNumber">Shirt number</label></th>
+					<th width="15%"></th>
 
 				</tr>
 			</thead>
@@ -36,14 +38,21 @@
 					<td>{{player.firstName}}</td>
 					<td>{{player.lastName}}</td>
 					<td>{{player.nationality}}</td>
-					<td align="right">	
-					<a href="#/player/{{player.id}}">
-							<button type="submit" class="btn btn-primary" ng-click=""
-								translate="player.viewButton">View</button>
-					</a>					
-						<button type="submit" class="btn btn-danger"
-							ng-click="deletePlayer(player.id)"
-							confirm-click translate="player.deleteButton">Delete</button>
+					<td>{{player.bodyColor}}</td>
+					<td>{{player.positionInTeam}}</td>
+					<td>{{player.shirtNumber}}</td>
+					<td align="right">
+					
+					<a href="#/player/{{player.id}}" style="color: black;text-decoration:none">
+                 <button type="submit" class="btn btn-default btn-in-row" ng-click="" data-placement="top" data-content="player.viewButton" data-toggle="popover" data-trigger="hover">
+                   <span style="color: #428bca;" class="glyphicon glyphicon-eye-open"></span>
+                </button>
+             </a>
+						 <a href="">		                     						
+               <button style="margin-left:5px;" type="submit" class="btn btn-default btn-in-row"
+                       ng-click="confirmClick() && deletePlayer(player.id)" confirm-click data-placement="top" data-content="player.deleteButton" data-toggle="popover" data-trigger="hover">
+                 <span style="color: #d43f3a;" class="glyphicon glyphicon-remove-circle"></span>
+               </button></a>									
 					</td>
 				</tr>
 			</tbody>

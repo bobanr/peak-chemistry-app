@@ -3,7 +3,7 @@
 /* App Module */
 
 var pcaApp = angular.module('pcaApp', ['http-auth-interceptor', 'tmh.dynamicLocale',
-    'ngResource', 'ngRoute', 'ngCookies', 'pcaAppUtils', 'pascalprecht.translate', 'truncate']);
+    'ngResource', 'ngRoute', 'ngCookies', 'pcaAppUtils', 'pascalprecht.translate', 'truncate','ui.bootstrap']);
 
 pcaApp
     .config(['$routeProvider', '$httpProvider', '$translateProvider',  'tmhDynamicLocaleProvider', 'USER_ROLES',
@@ -87,14 +87,14 @@ pcaApp
                     templateUrl: 'views/user.html',
                     controller: 'UserController',
                     access: {
-                        authorizedRoles: [USER_ROLES.all]
+                        authorizedRoles: [USER_ROLES.admin]
                     }
                 })
                  .when('/managers', {
                     templateUrl: 'views/users.html',
                     controller: 'UsersController',
                     access: {
-                        authorizedRoles: [USER_ROLES.all]
+                        authorizedRoles: [USER_ROLES.admin]
                     }
                 })
                 .when('/teams', {

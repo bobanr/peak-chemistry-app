@@ -58,7 +58,7 @@
                 </button>
              </a>					                     						
                <button style="margin-left:5px;" type="submit" class="btn btn-default btn-in-row"
-                       ng-click="deleteUser(user.id)" confirm-click data-placement="top" data-content="users.table.deleteButton" data-toggle="popover" data-trigger="hover">
+                       ng-click="confirmClick() && deleteUser(user.id)" confirm-click data-placement="top" data-content="users.table.deleteButton" data-toggle="popover" data-trigger="hover">
                  <span style="color: #d43f3a;" class="glyphicon glyphicon-remove-circle"></span>
                </button>
             </td>	

@@ -1,4 +1,6 @@
 package com.pca.web.rest;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -58,11 +60,11 @@ public class ManagerResource {
 	}
 
 	@RequestMapping(value = "/paged", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Page<User> getAllManagers(@RequestParam int page,
+	public Page <User> getAllManagers(@RequestParam int page,
 			@RequestParam int count, HttpServletRequest request) {
 		Sort sort = RequestProcessor.sorting(request);
 		Pageable pageable = new PageRequest(page - 1, count, sort);
-		return managerService.findAllManagers(pageable);
+		return managerService.findAll(pageable);
 
 	}
 
