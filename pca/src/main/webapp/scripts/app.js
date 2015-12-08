@@ -101,14 +101,14 @@ pcaApp
                     templateUrl: 'views/teams.html',
                     controller: 'TeamsController',
                     access: {
-                        authorizedRoles: [USER_ROLES.all]
+                        authorizedRoles: [USER_ROLES.user]
                     }
                 })
                 .when('/team/:id?', {
                     templateUrl: 'views/team.html',
                     controller: 'TeamController',
                     access: {
-                        authorizedRoles: [USER_ROLES.all]
+                        authorizedRoles: [USER_ROLES.user]
                     }
                 })
                 .when('/statistics', {

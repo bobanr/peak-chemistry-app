@@ -40,7 +40,13 @@
                                 <span class="glyphicon glyphicon-home"></span>
                                 <span translate="global.menu.home">Home</span>
                             </a>
-                        </li>                                               
+                        </li>    
+                        <li ng-switch-when="true" ng-show="isAuthorized(userRoles.user)" ng-class="{ active: isActive('/teams') }">
+                            <a href="#/teams">
+                                <span class="glyphicon glyphicon-home"></span>
+                                <span translate="global.menu.teams">Player</span>
+                            </a>
+                        </li>                                           
                         <li ng-switch-when="true" ng-show="isAuthorized(userRoles.user)" ng-class="{ active: isActive('/players') }">
                             <a href="#/players">
                                 <span class="glyphicon glyphicon-home"></span>

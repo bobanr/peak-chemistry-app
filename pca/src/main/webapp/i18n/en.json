@@ -19,7 +19,11 @@
                 "register": "Register"
             },
             "admin": "Administration",
+            "teams" : "Teams",
             "language": "Language"
+        },
+        "buttons": {
+        	"save": "Save"
         },
         "language": {
             "da": "Danish",
