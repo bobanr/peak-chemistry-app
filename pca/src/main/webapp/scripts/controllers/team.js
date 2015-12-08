@@ -10,7 +10,7 @@ pcaApp.controller('TeamsController', ['$scope','$routeParams','$rootScope','$tra
 			$scope.maxSize = 15;
 			// pagination
 			$scope.loadPage = function() {
-				TeamService.paged({
+				TeamService.myteams({
 					page : $scope.currentPage,
 					count : $scope.itemsPerPage
 				}, function(response) {

@@ -34,7 +34,7 @@ public class ManagerResource {
 			HttpServletRequest request, HttpServletResponse response) {
 		String username = user.getLogin();
 		Long userId = user.getId();
-		if (userId != null) {
+		if (userId != null && userId != 0) {
 			if (managerService.isOverlapLogedUser(username, userId)) {
 				response.setStatus(HttpServletResponse.SC_CONFLICT);
 			} else {

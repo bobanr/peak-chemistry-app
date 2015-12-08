@@ -10,5 +10,10 @@ pcaApp.factory('TeamService', function($resource) {
 			method : 'GET',
 			isArray: false
 		},	
+		myteams : {
+			url: 'app/rest/team/myteams',
+			method : 'GET',
+			isArray: false
+		},	
 	});
 });
