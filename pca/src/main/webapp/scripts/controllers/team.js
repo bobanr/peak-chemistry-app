@@ -27,3 +27,39 @@ pcaApp.controller('TeamsController', ['$scope','$routeParams','$rootScope','$tra
 			// pagination ends
 		}	
 ]);
+
+pcaApp.controller('TeamController', ['$scope','$routeParams','$rootScope','$translate', 'TeamService',
+                                      function($scope, $routeParams,$rootScope,$translate, TeamService){
+		if ($routeParams.id) {
+			$scope.id = $routeParams.id;
+			$scope.team = TeamService
+					.get(
+							{
+								id : $routeParams.id
+							},
+							function() {
+								var a = 1;
+							});
+		} 		
+		$scope.success = null;
+	    $scope.error = null;   
+	    
+	    $scope.saveTeam = function () {
+	    	TeamService.save($scope.team,
+	                function (value, responseHeaders) {
+	                    $scope.error = null;
+	                    $scope.success = 'OK';
+	                    $scope.team = TeamService.get({id:id});
+	                },
+	                function (httpResponse) {
+	                    $scope.success = null;
+	                    if (httpResponse.status === 304 &&
+	                            httpResponse.data.error && httpResponse.data.error === "Not Modified") {
+	                        $scope.error = null;
+	                    } else {
+	                        $scope.error = "ERROR";
+	                    }
+	                });
+	    };   
+	}	
+]);

@@ -371,6 +371,33 @@
               		 "removedPurchaseError":"<strong>The Manager cannot be deleted.</strong>",
               		 "confirmMessage":"Are you sure you want to delete?"
              }   
-    },    
+    },  
+    "teams":{
+              "title":"Teams",
+              "table": {
+              	 	"teamName":"Name",
+               		"homeStadium":"Home stadium",
+             		"createTeam":"Create new team"
+              },
+             "messages": {
+              		 "removedSuccess":"<strong>Manager removed.</strong>",
+              		 "removedError":"<strong>Manager cannot be removed</strong>",
+              		 "removedPurchaseError":"<strong>The Manager cannot be deleted.</strong>",
+              		 "confirmMessage":"Are you sure you want to delete?"
+             }   
+    }, 
+    "team":{
+              "title":"Team",
+              "form": {
+              	 	"teamName":"Name",
+               		"homeStadium":"Home stadium"
+              },
+              "messages": {
+              		 "removedSuccess":"<strong>Manager removed.</strong>",
+              		 "removedError":"<strong>Manager cannot be removed</strong>",
+              		 "removedPurchaseError":"<strong>The Manager cannot be deleted.</strong>",
+              		 "confirmMessage":"Are you sure you want to delete?"
+             }   
+    },  
     "footer": "This is your footer"
 }
