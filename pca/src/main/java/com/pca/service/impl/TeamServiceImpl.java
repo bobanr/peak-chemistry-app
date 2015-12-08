@@ -29,7 +29,7 @@ public class TeamServiceImpl extends
 	}
 
 	@Override
-	public Page<Team> getTeamsByManager(Pageable page) {
+	public Page<Team> getMyTeams(Pageable page) {
 		User user = userRepository.findUserByLogin(SecurityUtils
 				.getCurrentLogin());
 		return teamRepository.findByUserId(user.getId(), page);

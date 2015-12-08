@@ -53,7 +53,7 @@ public class TeamResource extends CrudResource<Team, TeamService> {
 			@RequestParam int count, HttpServletRequest request) {
 		Sort sort = RequestProcessor.sorting(request);
 		Pageable pageable = new PageRequest(page - 1, count, sort);
-		return getService().getTeamsByManager(pageable);
+		return getService().getMyTeams(pageable);
 	}
 
 }
