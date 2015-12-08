@@ -49,7 +49,7 @@ pcaApp.controller('TeamController', ['$scope','$routeParams','$rootScope','$tran
 	                function (value, responseHeaders) {
 	                    $scope.error = null;
 	                    $scope.success = 'OK';
-	                    $scope.team = TeamService.get({id:id});
+	                    $scope.team = value;
 	                },
 	                function (httpResponse) {
 	                    $scope.success = null;

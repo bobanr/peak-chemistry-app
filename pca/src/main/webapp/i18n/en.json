@@ -393,6 +393,8 @@
                		"homeStadium":"Home stadium"
               },
               "messages": {
+              	     "successSave":"Team successfully saved.",
+              	     "errorSave":"Error while team saving.",
               		 "removedSuccess":"<strong>Manager removed.</strong>",
               		 "removedError":"<strong>Manager cannot be removed</strong>",
               		 "removedPurchaseError":"<strong>The Manager cannot be deleted.</strong>",
