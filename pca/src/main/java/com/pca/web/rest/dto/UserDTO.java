@@ -16,7 +16,7 @@ public class UserDTO {
 
 	private String email;
 
-	private String langKey;
+    private String langKey;
 
 	private List<String> roles;
 
@@ -86,14 +86,6 @@ public class UserDTO {
 		this.email = email;
 	}
 
-	public String getLangKey() {
-		return langKey;
-	}
-
-	public void setLangKey(String langKey) {
-		this.langKey = langKey;
-	}
-
 	public List<String> getRoles() {
 		return roles;
 	}
@@ -131,8 +123,6 @@ public class UserDTO {
 		builder.append(lastName);
 		builder.append(", email=");
 		builder.append(email);
-		builder.append(", langKey=");
-		builder.append(langKey);
 		builder.append(", roles=");
 		builder.append(roles);
 		builder.append(", active=");
@@ -141,6 +131,14 @@ public class UserDTO {
 		builder.append(hasAuthory);
 		builder.append("]");
 		return builder.toString();
+	}
+
+	public String getLangKey() {
+		return langKey;
+	}
+
+	public void setLangKey(String langKey) {
+		this.langKey = langKey;
 	}
 
 }

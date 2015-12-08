@@ -30,18 +30,31 @@ public class ManagerResource {
 	private ManagerService managerService;
 
 	@RequestMapping(method = RequestMethod.POST, produces = "application/json")
-	public void create(@RequestBody @Valid UserDTO userDTO,
+	public User create(@RequestBody @Valid User user,
 			HttpServletRequest request, HttpServletResponse response) {
-		String username = userDTO.getLogin();
-		if (managerService.isOverlap(username)) {
-			response.setStatus(HttpServletResponse.SC_CONFLICT);
+		String username = user.getLogin();
+		Long userId = user.getId();
+		if (userId != null) {
+			if (managerService.isOverlapLogedUser(username, userId)) {
+				response.setStatus(HttpServletResponse.SC_CONFLICT);
+			} else {
+				user = managerService.updateUser(user.getId(), user.getLogin(),
+						user.getFirstName(), user.getLastName(),
+						user.getEmail(), user.getActive(),
+						user.getHasAuthority());
+			}
 		} else {
-			managerService.createNewUser(userDTO.getLogin(),
-					userDTO.getPassword(), userDTO.getFirstName(),
-					userDTO.getLastName(), userDTO.getEmail(),
-					userDTO.getActive(), userDTO.getHasAuthory());
-			response.setStatus(HttpServletResponse.SC_CREATED);
+			if (managerService.isOverlap(username)) {
+				response.setStatus(HttpServletResponse.SC_CONFLICT);
+			} else {
+				user = managerService.createNewUser(user.getLogin(),
+						user.getPassword(), user.getFirstName(),
+						user.getLastName(), user.getEmail(), user.getActive(),
+						user.getHasAuthority());
+				response.setStatus(HttpServletResponse.SC_CREATED);
+			}
 		}
+		return user;
 	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -59,7 +72,7 @@ public class ManagerResource {
 	}
 
 	@RequestMapping(value = "/paged", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Page <User> getAllManagers(@RequestParam int page,
+	public Page<User> getAllManagers(@RequestParam int page,
 			@RequestParam int count, HttpServletRequest request) {
 		Sort sort = RequestProcessor.sorting(request);
 		Pageable pageable = new PageRequest(page - 1, count, sort);

@@ -31,7 +31,7 @@ public class User extends DefaultModel implements Serializable {
     @Column (name = "USERNAME")
     private String login;
 
-    @JsonIgnore
+   //@JsonIgnore
     @Size(min = 0, max = 100)
     private String password;
 

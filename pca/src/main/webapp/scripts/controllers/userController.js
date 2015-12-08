@@ -16,11 +16,8 @@ pcaApp.controller('UserController', ['$scope', '$routeParams','$translate', 'Use
     $scope.doNotMatch = null;
     $scope.errorUserExists = null;
     $scope.saveUser = function () {
-        if ($scope.user.password != $scope.confirmPassword) {
-            $scope.doNotMatch = "ERROR";
-        } else {
         	if(userId != null) {                         
-            	UserService.update($scope.user,
+            	UserService.save($scope.user,
                         function (value, responseHeaders) {
                             $scope.error = null;
                             $scope.errorUserExists = null;
@@ -38,7 +35,10 @@ pcaApp.controller('UserController', ['$scope', '$routeParams','$translate', 'Use
                             }
                         });
             } else {
-            	 $scope.user.langKey = $translate.use();
+                if ($scope.user.password != $scope.confirmPassword) {
+                    $scope.doNotMatch = "ERROR";
+                } else {
+//            	 $scope.user.langKey = $translate.use();
                  $scope.doNotMatch = null;
             	 UserService.save($scope.user,
                         function (value, responseHeaders) {
@@ -56,9 +56,8 @@ pcaApp.controller('UserController', ['$scope', '$routeParams','$translate', 'Use
                                 $scope.errorUserExists = null;
                             }
                         });
+                }
             }
-            
-        }
-    }
+        };
 }]);          
 
