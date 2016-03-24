@@ -81,8 +81,9 @@
         }
     },
     "main": {
-        "title": "Welcome, Java Hipster!",
-        "subtitle": "This is your homepage",
+        "title": "Peak Consulting",
+        "subtitle": "About",
+        "about" : "Peak Consulting Inc. provides consulting services to business executives, institutional leaders and sports team managers or coaches who focus on building high performance cultures as a competitive strategy. Founded in 1998, Peak works with clients to support and implement culture change efforts, leadership programs and performance alignment strategies. The ability to balance proven process and well researched methodologies with practical implementation experience allow us to create predictable and sustainable improvements. Our passion for building winning cultures in a variety of organizational settings and delivering value comes through in the long term trusting relationships we build with our client partners.",
         "logged": {
             "message": "You are logged in as user \"{{username}}\"."
         },
@@ -405,5 +406,5 @@
               		 "confirmMessage":"Are you sure you want to delete?"
              }   
     },  
-    "footer": "This is your footer"
+    "footer": "© 2016 Peak Consultation - All Rights Reserved"
 }
