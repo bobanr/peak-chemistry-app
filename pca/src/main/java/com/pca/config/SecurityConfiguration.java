@@ -100,6 +100,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/app/rest/activate").permitAll()
                 .antMatchers("/app/rest/authenticate").permitAll()
                 .antMatchers("/app/rest/player/**").permitAll()
+                .antMatchers("/app/rest/mobile/**").permitAll()
                 .antMatchers("/app/rest/team/**").hasAuthority(AuthoritiesConstants.USER)
                 .antMatchers("/app/rest/logs/**").hasAuthority(AuthoritiesConstants.ADMIN)
                 .antMatchers("/app/**").authenticated()

@@ -1,15 +1,12 @@
 package com.pca.repository;
 
-import com.pca.domain.User;
+import java.util.Date;
+import java.util.List;
 
-import org.joda.time.LocalDate;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import java.util.Date;
-import java.util.List;
+import com.pca.domain.User;
 
 /**
  * Spring Data JPA repository for the User entity.
@@ -22,6 +19,9 @@ public interface UserRepository extends JpaRepository<User, String> {
     
     @Query("select u from User u where u.login = ?1")
     User findUserByLogin(String login);  
+    
+    @Query("select u from User u where u.id = ?1")
+    User findUserById(Long id);
     
    
 }
