@@ -33,24 +33,27 @@ public class User extends DefaultModel implements Serializable {
 
    //@JsonIgnore
     @Size(min = 0, max = 100)
+    @Column(name = "PASSWORD")
     private String password;
 
     @Size(min = 0, max = 50)
-    @Column(name = "first_name")
+    @Column(name = "FIRST_NAME")
     private String firstName;
 
     @Size(min = 0, max = 50)
-    @Column(name = "last_name")
+    @Column(name = "LAST_NAME")
     private String lastName;
 
     @Email
     @Size(min = 0, max = 100)
+    @Column(name = "EMAIL")
     private String email;
     
     @Column(name = "HAS_AUTHORITY")
     private Boolean hasAuthority = false;
 
     @NotNull
+    @Column(name = "ACTIVE")
     private Boolean active = false;
 
 

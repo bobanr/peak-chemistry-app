@@ -5,12 +5,18 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
 @Entity
 @Table(name = "PCA_PLAYERS")
-public class Player extends DefaultModel implements Serializable{
+public class Player extends DefaultModel implements Serializable {
+
+	@ManyToOne
+	@JoinColumn(name = "TEAM_ID")
+	private Team team;
 	
 	@Column(name = "FIRST_NAME")
 	private String firstName;
@@ -42,9 +48,6 @@ public class Player extends DefaultModel implements Serializable{
 	@Column(name = "POSITION_IN_TEAM")
 	private String positionInTeam;
 		
-//	@ManyToOne
-//	@JoinColumn(name = "TEAM_ID")
-//	private Team team;
 	public String getFirstName() {
 		return firstName;
 	}
@@ -124,16 +127,24 @@ public class Player extends DefaultModel implements Serializable{
 	public void setPositionInTeam(String positionInTeam) {
 		this.positionInTeam = positionInTeam;
 	}
+	
+	public Team getTeam() {
+		return team;
+	}
+
+	public void setTeam(Team team) {
+		this.team = team;
+	}
 
 	public Player() {
 		super();
-		// TODO Auto-generated constructor stu
 	}
 
 	public Player(String firstName, String lastName, String nationality,
 			String bodyColor, Date dateOfBorn, String placeOfBorn,
 			String countryOfBorn, Long shirtNumber, Long yearInTeam,
-			String positionInTeam) {
+			String positionInTeam, Team team) {
+		
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -145,21 +156,9 @@ public class Player extends DefaultModel implements Serializable{
 		this.shirtNumber = shirtNumber;
 		this.yearInTeam = yearInTeam;
 		this.positionInTeam = positionInTeam;
+		this.team = team;
 	}
 	
-	
-
-	public Player(String firstName, String lastName, String nationality,
-			String bodyColor, String placeOfBorn, String countryOfBorn) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.nationality = nationality;
-		this.bodyColor = bodyColor;
-		this.placeOfBorn = placeOfBorn;
-		this.countryOfBorn = countryOfBorn;
-	}
-
 	@Override
 	public String toString() {
 		return "Player [firstName=" + firstName + ", lastName=" + lastName
@@ -167,7 +166,8 @@ public class Player extends DefaultModel implements Serializable{
 				+ ", dateOfBorn=" + dateOfBorn + ", placeOfBorn=" + placeOfBorn
 				+ ", countryOfBorn=" + countryOfBorn + ", shirtNumber="
 				+ shirtNumber + ", yearInTeam=" + yearInTeam
-				+ ", positionInTeam=" + positionInTeam + "]";
+				+ ", positionInTeam=" + positionInTeam 
+				+ ", team=" + team + "]";
 	}
 	
 	
