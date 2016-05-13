@@ -1,5 +1,9 @@
 package com.pca.web.rest;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -55,5 +59,14 @@ public class TeamResource extends CrudResource<Team, TeamService> {
 		Pageable pageable = new PageRequest(page - 1, count, sort);
 		return getService().getMyTeams(pageable);
 	}
+	
+	@RequestMapping(method = RequestMethod.GET, produces = "application/json")
+    public List<Team> getAll() {
+		User user = userRepository.findUserByLogin(SecurityUtils
+				.getCurrentLogin());
+		long id = user.getId();
+        Collection<Team> all = getService().findByUserid(id);
+        return all == null ? new ArrayList<Team>() : new ArrayList<Team>(all);
+    }
 
 }

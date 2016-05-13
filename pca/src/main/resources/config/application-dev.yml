@@ -10,7 +10,7 @@ spring:
         databaseName: 
         serverName: 
         username: root
-        password: P@ssw0rd
+        password: adminpass
 
     jpa:
         database-platform: org.hibernate.dialect.MySQLDialect

@@ -18,6 +18,28 @@ pcaApp.controller('TeamsController', ['$scope','$routeParams','$rootScope','$tra
 					$scope.totalItems = response.totalElements;
 				});
 			};
+			
+			$scope.deleteTeam = function(teamId) {
+				TeamService.remove({
+					id : teamId
+				},
+		         function(value, responseHeaders) {
+		             $scope.error = null;
+		             $scope.error1 = null;
+		             $scope.success = 'OK';
+		             $scope.loadPage(); 					                 
+		         },
+		         function(httpResponse) {
+		             $scope.success = null;
+		             $scope.error = null;
+		             $scope.error1 = null;
+		             if (httpResponse.status == 409) {
+		                 $scope.error1 = "ERROR";
+		             } else {
+		                 $scope.error = "ERROR";
+		             }
+		         });
+			};
 		
 			$scope.loadPage();
 		
@@ -25,7 +47,9 @@ pcaApp.controller('TeamsController', ['$scope','$routeParams','$rootScope','$tra
 				$scope.loadPage();
 			};
 			// pagination ends
-		}	
+		}
+
+     
 ]);
 
 pcaApp.controller('TeamController', ['$scope','$routeParams','$rootScope','$translate', 'TeamService',

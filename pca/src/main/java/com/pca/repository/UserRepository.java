@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import com.pca.domain.User;
 import com.pca.domain.UserPermission;
 
+
 /**
  * Spring Data JPA repository for the User entity.
  */
@@ -26,5 +27,4 @@ public interface UserRepository extends JpaRepository<User, String> {
     
     @Query("select up from UserPermission up where up.user.id = ?1")
 	List <UserPermission> getPermissionsForUser(Long userId);
-    
 }

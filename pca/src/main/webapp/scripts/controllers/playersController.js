@@ -4,7 +4,7 @@ pcaApp.controller('PlayersController', [ '$scope','$rootScope','$routeParams','$
 		function($scope, $rootScope,$routeParams,$translate, PlayerService) {
 	
    
-	
+	$scope.id = $routeParams.id;
 	$scope.currentPage = 1;
 	$scope.itemsPerPage = 10;
 	$scope.maxSize = 15;
@@ -12,7 +12,8 @@ pcaApp.controller('PlayersController', [ '$scope','$rootScope','$routeParams','$
 	$scope.loadPage = function() {
 		PlayerService.paged({
 			page : $scope.currentPage,
-			count : $scope.itemsPerPage
+			count : $scope.itemsPerPage,
+			teamId:$scope.id
 		}, function(response) {
 			$scope.players = response.content;
 			$scope.totalItems = response.totalElements;

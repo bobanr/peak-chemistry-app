@@ -76,7 +76,7 @@ pcaApp
                         authorizedRoles: [USER_ROLES.user]
                     }
                 })
-                 .when('/players', {
+                 .when('/players/:id?', {
                     templateUrl: 'views/players.html',
                     controller: 'PlayersController',
                     access: {

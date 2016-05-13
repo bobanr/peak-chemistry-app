@@ -323,6 +323,7 @@
     },
     "player":{
     "title":"Players",
+    "player":"Player",
     "firstName":"First name",
     "lastName":"Last name",
     "nationality":"Nationality",
@@ -350,7 +351,9 @@
     "attackingMidfielder":"Attacking Midfielder - AM",
     "wideMidfielders":"Wide Midfielders - WM",
     "wideForward":"Wide Forward - WF",
-    "centerForward":"Center Forward - CF"
+    "centerForward":"Center Forward - CF",
+    "success":"<strong>Player save!</strong>",
+    "error": "<strong>An error has occured!</strong> Player could not be saved."
     },
     "statistics":{
     "title":"Statistics",
@@ -388,7 +391,9 @@
               		 "removedSuccess":"<strong>Manager removed.</strong>",
               		 "removedError":"<strong>Manager cannot be removed</strong>",
               		 "removedPurchaseError":"<strong>The Manager cannot be deleted.</strong>",
-              		 "confirmMessage":"Are you sure you want to delete?"
+              		 "confirmMessage":"Are you sure you want to delete?",
+              		 "removedTeamSuccess":"<strong>Team removed.</strong>",
+              		 "removedTeamError":"<strong>Team cannot be removed</strong>"
              }   
     }, 
     "team":{

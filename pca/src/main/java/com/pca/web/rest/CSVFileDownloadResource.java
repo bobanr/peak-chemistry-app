@@ -8,6 +8,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.supercsv.io.CsvBeanWriter;
@@ -24,8 +25,8 @@ public class CSVFileDownloadResource {
 	@Autowired
 	PlayerService playerService;
 	
-	@RequestMapping(value = "/rest/downloadCSVByName")
-	public void downloadCSVByName(HttpServletResponse response) throws IOException {
+	@RequestMapping(value = "/rest/downloadCSVByName/{teamId}")
+	public void downloadCSVByName(@PathVariable ("teamId") Long teamId,HttpServletResponse response) throws IOException {
 
 		String csvFileName = "player.csv";
 
@@ -37,7 +38,7 @@ public class CSVFileDownloadResource {
 				csvFileName);
 		response.setHeader(headerKey, headerValue);		 	 
 
-		Collection<Player> listOfPlayer = playerService.findAll();
+		Collection<Player> listOfPlayer = playerService.findByTeamId(teamId);
 		// uses the Super CSV API to generate CSV data from the model data 
 		ICsvBeanWriter csvWriter = new CsvBeanWriter(response.getWriter(),
 				CsvPreference.STANDARD_PREFERENCE);
@@ -56,8 +57,8 @@ public class CSVFileDownloadResource {
 		csvWriter.close();
 	}
 	
-	@RequestMapping(value = "/rest/downloadCSVByShirtNumber")
-	public void downloadCSVByShirtNUmber(HttpServletResponse response) throws IOException {
+	@RequestMapping(value = "/rest/downloadCSVByShirtNumber/{teamId}")
+	public void downloadCSVByShirtNUmber(@PathVariable ("teamId") Long teamId,HttpServletResponse response) throws IOException {
 
 		String csvFileName = "player.csv";
 
@@ -69,7 +70,7 @@ public class CSVFileDownloadResource {
 				csvFileName);
 		response.setHeader(headerKey, headerValue);		 	 
 
-		Collection<Player> listOfPlayer = playerService.findAll();
+		Collection<Player> listOfPlayer = playerService.findByTeamId(teamId);
 		// uses the Super CSV API to generate CSV data from the model data 
 		ICsvBeanWriter csvWriter = new CsvBeanWriter(response.getWriter(),
 				CsvPreference.STANDARD_PREFERENCE);

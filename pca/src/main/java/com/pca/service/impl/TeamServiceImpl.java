@@ -1,5 +1,7 @@
 package com.pca.service.impl;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -33,6 +35,12 @@ public class TeamServiceImpl extends
 		User user = userRepository.findUserByLogin(SecurityUtils
 				.getCurrentLogin());
 		return teamRepository.findByUserId(user.getId(), page);
+	}
+
+	@Override
+	public Collection<Team> findByUserid(long id) {
+		
+		return teamRepository.findByUserid(id);
 	}
 
 }
