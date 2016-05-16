@@ -17,7 +17,15 @@
 				try again.
 			</div>
 			
-			
+	<table width="100%" ng-show = "showButton">
+		<tr>
+			<td><a href="#/players/{{team.id}}"><button type="submit"
+						class="btn btn-primary" style="float: right; width: 175px;">
+						<span class="glyphicon glyphicon-list" />&nbsp;&nbsp;<span
+							translate="player.title" />
+					</button></a></td>
+		</tr>
+	</table>
 
 			<form name="form" role="form" novalidate
 				class="ng-scope ng-invalid ng-invalid-required ng-dirty ng-valid-minlength"

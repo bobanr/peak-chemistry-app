@@ -3,7 +3,7 @@
 /* App Module */
 
 var pcaApp = angular.module('pcaApp', ['http-auth-interceptor', 'tmh.dynamicLocale',
-    'ngResource', 'ngRoute', 'ngCookies', 'pcaAppUtils', 'pascalprecht.translate', 'truncate','ui.bootstrap']);
+    'ngResource', 'ngRoute', 'ngCookies', 'pcaAppUtils', 'pascalprecht.translate', 'truncate','ui.bootstrap','LocalStorageModule']);
 
 pcaApp
     .config(['$routeProvider', '$httpProvider', '$translateProvider',  'tmhDynamicLocaleProvider', 'USER_ROLES',

@@ -52,10 +52,15 @@ pcaApp.controller('TeamsController', ['$scope','$routeParams','$rootScope','$tra
      
 ]);
 
-pcaApp.controller('TeamController', ['$scope','$routeParams','$rootScope','$translate', 'TeamService',
-                                      function($scope, $routeParams,$rootScope,$translate, TeamService){
+pcaApp.controller('TeamController', ['$scope','$routeParams','$rootScope','$translate', 'TeamService','localStorageService',
+                                      function($scope, $routeParams,$rootScope,$translate, TeamService,localStorageService){
+	   
+	$scope.showButton = false;
+	
 		if ($routeParams.id) {
+			$scope.showButton = true;
 			$scope.id = $routeParams.id;
+			localStorageService.set("teamID", $scope.id);
 			$scope.team = TeamService
 					.get(
 							{
@@ -74,6 +79,7 @@ pcaApp.controller('TeamController', ['$scope','$routeParams','$rootScope','$tran
 	                    $scope.error = null;
 	                    $scope.success = 'OK';
 	                    $scope.team = value;
+	                    $scope.showButton = true;
 	                },
 	                function (httpResponse) {
 	                    $scope.success = null;

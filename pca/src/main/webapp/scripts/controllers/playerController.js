@@ -1,8 +1,10 @@
 'use strict';
 
-pcaApp.controller('PlayerController', [ '$scope','$routeParams','$rootScope','$translate', 'PlayerService','TeamService',
-		function($scope, $routeParams,$rootScope,$translate, PlayerService,TeamService) {
+pcaApp.controller('PlayerController', [ '$scope','$routeParams','$rootScope','$translate', 'PlayerService','TeamService','localStorageService',
+		function($scope, $routeParams,$rootScope,$translate, PlayerService,TeamService,localStorageService) {
 
+	$scope.teamID = localStorageService.get("teamID");
+	
 	if ($routeParams.id) {
 		$scope.id = $routeParams.id;
 		$scope.player = PlayerService
@@ -38,16 +40,17 @@ pcaApp.controller('PlayerController', [ '$scope','$routeParams','$rootScope','$t
     $scope.positionInTeam = $scope.positionsInTeam[0];
     $scope.playerPosition = $scope.positionInTeam;
     
-    TeamService.query(function(data) {
+   /* TeamService.query(function(data) {
     	$scope.teams = data;
     	$scope.team = $scope.teams[0];
-    });
+    });*/
+    
+   
     
     $scope.savePlayer = function () {
     	$scope.player.bodyColor = $scope.bodyColor.name;
     	$scope.player.positionInTeam = $scope.playerPosition.name;
     	$scope.player.dateOfBorn = $scope.dateOfBorn;
-    	$scope.player.team = $scope.player.teamName;
     	PlayerService.save($scope.player,
                 function (value, responseHeaders) {
                     $scope.error = null;
