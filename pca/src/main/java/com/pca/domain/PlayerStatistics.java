@@ -7,138 +7,99 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table (name = "PCA_PLAYER_STATISTICS")
 public class PlayerStatistics extends DefaultModel implements Serializable{
+
+	//Refer to enum statistic type
+	@NotNull
+	@Column (name="STATISTIC_TYPE")
+	private Integer statisticType;
 	
-	@Column(name = "GOAL")
-	private Long goal;
+	@NotNull
+	@Column (name="MINUTE")
+	private int minute;
 	
-	@Column(name = "ASSISTS")
-	private Long assists;
+	@NotNull
+	@ManyToOne
+	@JoinColumn(name = "PLAYER_ID")
+	private Player player;
 	
-	@Column(name = "OFFSIDE")
-	private Long offside;
+	//It will be used for substitutions
+	@ManyToOne
+	@JoinColumn(name = "WITH_PLAYER_ID")
+	private Player withPlayer;
 	
-	@Column(name = "YELOW_CARD")
-	private Long yelowCard;
-	
-	@Column(name = "RED_CARD")
-	private Long redCard;
-	
-	@Column(name = "FOUL_OF_PLAYER")
-	private Long foulOfPlayer;
-	
-	@Column(name = "FOUL")
-	private Long foul;
-	
-	@Column(name = "ERROR")
-	private Long error;
-	
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "MATCH_ID")
-	private Matches matches;
-
-	public Long getGoal() {
-		return goal;
-	}
-
-	public void setGoal(Long goal) {
-		this.goal = goal;
-	}
-
-	public Long getAssists() {
-		return assists;
-	}
-
-	public void setAssists(Long assists) {
-		this.assists = assists;
-	}
-
-	public Long getOffside() {
-		return offside;
-	}
-
-	public void setOffside(Long offside) {
-		this.offside = offside;
-	}
-
-	public Long getYelowCard() {
-		return yelowCard;
-	}
-
-	public void setYelowCard(Long yelowCard) {
-		this.yelowCard = yelowCard;
-	}
-
-	public Long getRedCard() {
-		return redCard;
-	}
-
-	public void setRedCard(Long redCard) {
-		this.redCard = redCard;
-	}
-
-	public Long getFoulOfPlayer() {
-		return foulOfPlayer;
-	}
-
-	public void setFoulOfPlayer(Long foulOfPlayer) {
-		this.foulOfPlayer = foulOfPlayer;
-	}
-
-	public Long getFoul() {
-		return foul;
-	}
-
-	public void setFoul(Long foul) {
-		this.foul = foul;
-	}
-
-	public Long getError() {
-		return error;
-	}
-
-	public void setError(Long error) {
-		this.error = error;
-	}
-
-	public Matches getMatches() {
-		return matches;
-	}
-
-	public void setMatches(Matches matches) {
-		this.matches = matches;
-	}
+	private Matches match;
+	
 
 	public PlayerStatistics() {
 		
 
 	}
 
-	public PlayerStatistics(Long goal, Long assists, Long offside,
-			Long yelowCard, Long redCard, Long foulOfPlayer, Long foul,
-			Long error, Matches matches) {
+	public PlayerStatistics(Integer statisticType, int minute, Player player, Player withPlayer, Matches match) {
+		
 		super();
-		this.goal = goal;
-		this.assists = assists;
-		this.offside = offside;
-		this.yelowCard = yelowCard;
-		this.redCard = redCard;
-		this.foulOfPlayer = foulOfPlayer;
-		this.foul = foul;
-		this.error = error;
-		this.matches = matches;
+		this.statisticType = statisticType;
+		this.minute = minute;
+		this.player = player;
+		this.withPlayer = withPlayer;
+		this.match = match;
+	}
+	
+	
+
+	public Integer getStatisticType() {
+		return statisticType;
+	}
+
+	public void setStatisticType(Integer statisticType) {
+		this.statisticType = statisticType;
+	}
+
+	public int getMinute() {
+		return minute;
+	}
+
+	public void setMinute(int minute) {
+		this.minute = minute;
+	}
+
+	public Player getPlayer() {
+		return player;
+	}
+
+	public void setPlayer(Player player) {
+		this.player = player;
+	}
+
+	public Player getWithPlayer() {
+		return withPlayer;
+	}
+
+	public void setWithPlayer(Player withPlayer) {
+		this.withPlayer = withPlayer;
+	}
+
+	public Matches getMatch() {
+		return match;
+	}
+
+	public void setMatch(Matches match) {
+		this.match = match;
 	}
 
 	@Override
 	public String toString() {
-		return "PlayerStatistics [goal=" + goal + ", assists=" + assists
-				+ ", offside=" + offside + ", yelowCard=" + yelowCard
-				+ ", redCard=" + redCard + ", foulOfPlayer=" + foulOfPlayer
-				+ ", foul=" + foul + ", error=" + error + ", matches="
-				+ matches + "]";
+		return "PlayerStatistics [statisticType=" + statisticType + ", minute=" + minute
+				+ ", player=" + player + ", withPlayer=" + withPlayer
+				+ ", match="+ match + "]";
 	}
 
 	

@@ -23,16 +23,20 @@ public class Matches extends DefaultModel implements Serializable {
 	private String stadiumName;
 	
 	@NotNull
-	@Column(name = "FORMATION_TYPE")
-	private Long formationType;
+	@Column(name = "FORMATION")
+	private String formation;
 	
 	@NotNull
-	@Column(name = "START_TIME")
-	private Date startTime;
+	@Column(name = "MATCH_TIME")
+	private Date matchTime;
+		
+	@NotNull
+	@Column (name="GOALS")
+	private int goals;
 	
 	@NotNull
-	@Column(name = "END_TIME")
-	private Date endTime;
+	@Column (name="OPPONENT_GOALS")
+	private int opponentGoals;
 	
 	@ManyToOne
 	@JoinColumn(name = "TEAM_ID")
@@ -46,15 +50,16 @@ public class Matches extends DefaultModel implements Serializable {
 
 
 
-	public Matches(String opponentName, String stadiumName, Long formationType,
-			Date startTime, Date endTime, Team team) {
+	public Matches(String opponentName, String stadiumName, String formation, Date matchTime, Team team, int goals,
+			int opponentGoals) {
 		super();
 		this.opponentName = opponentName;
 		this.stadiumName = stadiumName;
-		this.formationType = formationType;
-		this.startTime = startTime;
-		this.endTime = endTime;
+		this.formation = formation;
+		this.matchTime = matchTime;
 		this.team = team;
+		this.goals = goals;
+		this.opponentGoals = opponentGoals;
 	}
 
 
@@ -83,60 +88,57 @@ public class Matches extends DefaultModel implements Serializable {
 
 
 
-	public Long getFormationType() {
-		return formationType;
+	public String getFormation() {
+		return formation;
 	}
 
 
 
-	public void setFormationType(Long formationType) {
-		this.formationType = formationType;
+	public void setFormation(String formation) {
+		this.formation = formation;
 	}
 
 
 
-	public Date getStartTime() {
-		return startTime;
+	public Date getMatchTime() {
+		return matchTime;
 	}
 
-
-
-	public void setStartTime(Date startTime) {
-		this.startTime = startTime;
+	public void setMatchTime(Date matchTime) {
+		this.matchTime = matchTime;
 	}
-
-
-
-	public Date getEndTime() {
-		return endTime;
-	}
-
-
-
-	public void setEndTime(Date endTime) {
-		this.endTime = endTime;
-	}
-
-
 
 	public Team getTeam() {
 		return team;
 	}
 
-
-
 	public void setTeam(Team team) {
 		this.team = team;
 	}
 
+	public int getGoals() {
+		return goals;
+	}
+
+	public void setGoals(int goals) {
+		this.goals = goals;
+	}
+
+	public int getOpponentGoals() {
+		return opponentGoals;
+	}
+
+	public void setOpponentGoals(int opponentGoals) {
+		this.opponentGoals = opponentGoals;
+	}
 
 
 	@Override
 	public String toString() {
 		return "Matches [opponentName=" + opponentName + ", stadiumName="
-				+ stadiumName + ", formationType=" + formationType
-				+ ", startTime=" + startTime + ", endTime=" + endTime
-				+ ", team=" + team + "]";
+				+ stadiumName + ", formationType=" + formation
+				+ ", matchTime=" + matchTime + ", team=" + team
+				+ ", goals=" + goals + ", opponentGoals="+opponentGoals+"]";
 	}
 	
 
