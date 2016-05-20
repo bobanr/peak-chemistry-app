@@ -9,6 +9,8 @@ public class MatchDTO implements Serializable {
 	 * Added by Eclipse
 	 */
 	private static final long serialVersionUID = 5359966899919278140L;
+	
+	private Long userId;
 
 	private String opponentName;
 	
@@ -92,6 +94,14 @@ public class MatchDTO implements Serializable {
 
 	public void setStatistics(List<PlayerStatisticsDTO> statistics) {
 		this.statistics = statistics;
+	}
+
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 	
 }
