@@ -1,6 +1,7 @@
 package com.pca.web.rest.dto;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 public class MatchDTO implements Serializable {
@@ -19,6 +20,8 @@ public class MatchDTO implements Serializable {
 	private String formation;
 	
 	private Long teamId;
+	
+	private Date matchTime;
 	
 	private int goals;
 	
@@ -103,5 +106,21 @@ public class MatchDTO implements Serializable {
 	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
+
+	public Date getMatchTime() {
+		return matchTime;
+	}
+
+	public void setMatchTime(Date matchTime) {
+		this.matchTime = matchTime;
+	}
 	
+	@Override
+	public String toString() {
+		
+		return "MatchDTO [userId=" + userId + ", teamId=" + teamId
+				+ ", stadiumName="+ stadiumName + ", formationType=" + formation
+				+ ", matchTime=" + matchTime + ", goals=" + goals
+				+ ", opponentGoals="+opponentGoals+ ", opponentName=" +  opponentName+"]";
+	}
 }

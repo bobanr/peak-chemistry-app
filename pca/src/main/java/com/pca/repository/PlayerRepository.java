@@ -8,7 +8,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 
 import com.pca.domain.Player;
-import com.pca.domain.Team;
 
 public interface PlayerRepository extends JpaSpecificationRepository<Player>{
 	

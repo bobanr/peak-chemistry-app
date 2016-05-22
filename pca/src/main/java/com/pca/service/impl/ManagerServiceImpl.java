@@ -1,22 +1,9 @@
 package com.pca.service.impl;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.transaction.Transactional;
-
-
-
-
-
-
-
-
-
-
-
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,13 +31,16 @@ public class ManagerServiceImpl extends DefaultModelCrudServiceImpl<User, Manage
 	
 	@Autowired
 	private ManagerRepository managerRepository;
+	
 	@Autowired
     private PasswordEncoder passwordEncoder;
 	
 	@Autowired
 	private UserRepository userRepository;
+	
 	@Autowired
 	private AuthorityRepository authorityRepository;
+	
 	@Autowired
 	private UserPermissionRepository userPermissionRepository;
 	
@@ -66,7 +56,7 @@ public class ManagerServiceImpl extends DefaultModelCrudServiceImpl<User, Manage
 		// TODO Auto-generated method stub
 		User newUser = new User();
 	    Authority authority = authorityRepository.findAutorityByName("ROLE_USER");
-	    Set<Authority> authorities = new HashSet<Authority>();
+	  //  Set<Authority> authorities = new HashSet<Authority>();
 	    String encryptedPassword = passwordEncoder.encode(password);
 	    newUser.setLogin(login);
 	    // new user gets initially a generated password
@@ -78,8 +68,8 @@ public class ManagerServiceImpl extends DefaultModelCrudServiceImpl<User, Manage
 	    newUser.setActive(active);
 	    // new user gets registration key
 	    newUser.setHasAuthority(hasAuthority);
-//	    authorities.add(authority);
-	//    
+	    
+//	    authorities.add(authority);  
 //	    newUser.setAuthorities(authorities);
 	    
 	    managerRepository.saveAndFlush(newUser);

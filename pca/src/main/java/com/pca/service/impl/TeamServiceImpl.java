@@ -42,5 +42,11 @@ public class TeamServiceImpl extends
 		
 		return teamRepository.findByUserid(id);
 	}
+	
+	@Override
+	public Team findByIdAndUserId(Long id, Long userId) {
+		
+		return teamRepository.findByIdAndUserId(id, userId);
+	}
 
 }

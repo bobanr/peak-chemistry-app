@@ -1,13 +1,11 @@
 package com.pca.service;
 
-import java.util.List;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.pca.domain.User;
 
-public interface ManagerService extends DefaultModelCrudService<User>{
+public interface ManagerService extends DefaultModelCrudService<User> {
 	
 	public User createNewUser (String login, String password, String firstName, String lastName, String email,
             Boolean active, Boolean hasAuthority);

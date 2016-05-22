@@ -7,7 +7,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 
 import com.pca.domain.Team;
-import com.pca.domain.User;
 
 public interface TeamRepository extends JpaSpecificationRepository<Team> {
 	
@@ -15,4 +14,6 @@ public interface TeamRepository extends JpaSpecificationRepository<Team> {
     
     @Query("select t from Team t where t.user.id = ?1")
     public Collection<Team> findByUserid(long id);
+    
+    Team findByIdAndUserId(Long id, Long userId);
 }
