@@ -1,6 +1,7 @@
 package com.pca.web.rest;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -18,17 +19,27 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.pca.domain.Matches;
+import com.pca.domain.Passes;
 import com.pca.domain.Player;
+import com.pca.domain.PlayerStatistics;
+import com.pca.domain.Team;
 import com.pca.domain.User;
 import com.pca.domain.UserPermission;
 import com.pca.repository.UserRepository;
 import com.pca.security.AuthoritiesConstants;
+import com.pca.service.MatchesService;
+import com.pca.service.PassesService;
 import com.pca.service.PlayerService;
+import com.pca.service.PlayerStatisticsService;
+import com.pca.service.TeamService;
 import com.pca.service.impl.ManagerServiceImpl;
 import com.pca.web.rest.dto.JsonObjectDTO;
 import com.pca.web.rest.dto.ManagerDTO;
 import com.pca.web.rest.dto.MatchDTO;
+import com.pca.web.rest.dto.PassesDTO;
 import com.pca.web.rest.dto.PlayerDTO;
+import com.pca.web.rest.dto.PlayerStatisticsDTO;
 import com.pca.web.rest.dto.TeamDTO;
 
 @RestController
@@ -43,7 +54,19 @@ public class MobileServicesResource {
 
 	@Inject
 	private PasswordEncoder passwordEncoder;
-	
+
+	@Autowired
+	private TeamService teamService;
+
+	@Autowired
+	private MatchesService matchesService;
+
+	@Autowired
+	private PassesService passesService;
+
+	@Autowired
+	private PlayerStatisticsService playerStatisticsService;
+
 	private final Logger log = LoggerFactory.getLogger(ManagerServiceImpl.class);
 
 	private ManagerDTO getManagerWithTeams(User user) {
@@ -87,7 +110,7 @@ public class MobileServicesResource {
 	@RequestMapping(value = "/myteams", method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<JsonObjectDTO> getMyTeams(@RequestParam long userId) {
 
-		log.info(String.format("myteams for userId: %s",userId));
+		log.info(String.format("myteams for userId: %s", userId));
 		JsonObjectDTO response = new JsonObjectDTO();
 
 		try {
@@ -113,9 +136,9 @@ public class MobileServicesResource {
 
 			response.setSuccess(true);
 			response.setData(getManagerWithTeams(user));
-			log.info(String.format("myteams for userId: %s successfully executed",userId));
+			log.info(String.format("myteams for userId: %s successfully executed", userId));
 			return new ResponseEntity<JsonObjectDTO>(response, HttpStatus.OK);
-			
+
 		} catch (Exception e) {
 			response.setSuccess(false);
 			response.setMessage(e.getMessage());
@@ -174,12 +197,80 @@ public class MobileServicesResource {
 			return new ResponseEntity<JsonObjectDTO>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-	
-	@Transactional(rollbackFor = Exception.class)
+
 	@RequestMapping(value = "/match", method = RequestMethod.POST, produces = "application/json")
-	public void addMatch (@RequestParam MatchDTO match) {
+	public ResponseEntity<JsonObjectDTO> addMatch(@RequestParam MatchDTO match) {
+
+		log.info(String.format("Call match service: %s", match.toString()));
+		JsonObjectDTO response = new JsonObjectDTO();
 		
-		log.info(String.format("Call match service"));
+		try {
+
+		    Long matchId = saveMatch(match);
+			response.setSuccess(true);
+			response.setData(matchId);
+			log.error(String.format("SUCCESS match service for team with id %s and userId= %s saved in DB with matchID: %s",
+					match.getTeamId(), match.getUserId(), matchId));
+			return new ResponseEntity<JsonObjectDTO>(response, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			response.setSuccess(false);
+			response.setMessage(e.getMessage());
+			log.error(String.format("match service for team with id %s and userId= %s throws error: %s",
+					match.getTeamId(), match.getUserId(), e.getMessage()));
+			return new ResponseEntity<JsonObjectDTO>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+	}
+
+	@Transactional(rollbackFor = Exception.class)
+	private Long saveMatch(MatchDTO match) throws Exception {
+
+		// Find the team
+		Team team = teamService.findByIdAndUserId(match.getTeamId(), match.getUserId());
+		if (team == null) {
+			throw new Exception(
+					String.format("Team with id %s and userId= %s not found", match.getTeamId(), match.getUserId()));
+		}
+
+		// Create the match in DB
+		Matches matches = matchesService.saveAndFlush(new Matches(match.getOpponentName(), match.getStadiumName(),
+				match.getFormation(), match.getMatchTime(), team, match.getGoals(), match.getOpponentGoals()));
+
+		// save the passes for the match
+		List<Passes> passes = new ArrayList<Passes>();
+		for (PassesDTO pass : match.getPasses()) {
+			passes.add(new Passes(pass.getFromNumber(), pass.getFromNumber(), pass.getPassTime(), matches));
+		}
+
+		if (passes.size() > 0) {
+			passesService.save(passes);
+		}
+
+		// save the player statistic for the match
+		HashMap<Long, Player> teamPlayers = new HashMap<Long, Player>();
+		Collection<Player> players = playerService.findByTeamId(match.getTeamId());
+		for (Player player : players) {
+			teamPlayers.put(player.getId(), player);
+		}
+
+		List<PlayerStatistics> statistics = new ArrayList<PlayerStatistics>();
+		for (PlayerStatisticsDTO statistic : match.getStatistics()) {
+
+			Player player = teamPlayers.get(statistic.getPlayerId());
+			Player withPlayer = null;
+			if (statistic.getWithPlayerId() != null) {
+				withPlayer = teamPlayers.get(statistic.getWithPlayerId());
+			}
+			statistics.add(new PlayerStatistics(statistic.getStatisticType(), statistic.getMinute(), player, withPlayer,
+					matches));
+		}
+
+		if (statistics.size() > 0) {
+			playerStatisticsService.save(statistics);
+		}
+		
+		return matches.getId();
 	}
 
 }

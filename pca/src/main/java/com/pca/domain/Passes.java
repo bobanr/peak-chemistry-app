@@ -13,13 +13,13 @@ import javax.persistence.Table;
 public class Passes extends DefaultModel implements Serializable {
 
 	@Column(name = "FROM_NUMBER")
-	private Long fromNumber;
+	private Integer fromNumber;
 
 	@Column(name = "TO_NUMBER")
-	private Long toNumber;
+	private Integer toNumber;
 
 	@Column(name = "PASS_TIME")
-	private int passTime;
+	private Integer passTime;
 
 	@ManyToOne
 	@JoinColumn(name = "MATCH_ID")
@@ -29,7 +29,7 @@ public class Passes extends DefaultModel implements Serializable {
 
 	}
 
-	public Passes(Long fromNumber, Long toNumber, int passTime, Matches matches) {
+	public Passes(Integer fromNumber, Integer toNumber, Integer passTime, Matches matches) {
 		super();
 		this.fromNumber = fromNumber;
 		this.toNumber = toNumber;
@@ -37,19 +37,19 @@ public class Passes extends DefaultModel implements Serializable {
 		this.matches = matches;
 	}
 
-	public Long getFromNumber() {
+	public Integer getFromNumber() {
 		return fromNumber;
 	}
 
-	public void setFromNumber(Long fromNumber) {
+	public void setFromNumber(Integer fromNumber) {
 		this.fromNumber = fromNumber;
 	}
 
-	public Long getToNumber() {
+	public Integer getToNumber() {
 		return toNumber;
 	}
 
-	public void setToNumber(Long toNumber) {
+	public void setToNumber(Integer toNumber) {
 		this.toNumber = toNumber;
 	}
 
