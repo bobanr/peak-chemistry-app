@@ -1,7 +1,6 @@
 package com.pca.web.rest.dto;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 public class MatchDTO implements Serializable {
@@ -21,7 +20,7 @@ public class MatchDTO implements Serializable {
 	
 	private Long teamId;
 	
-	private Date matchTime;
+	private String matchTime;
 	
 	private int goals;
 	
@@ -107,11 +106,11 @@ public class MatchDTO implements Serializable {
 		this.userId = userId;
 	}
 
-	public Date getMatchTime() {
+	public String getMatchTime() {
 		return matchTime;
 	}
 
-	public void setMatchTime(Date matchTime) {
+	public void setMatchTime(String matchTime) {
 		this.matchTime = matchTime;
 	}
 	

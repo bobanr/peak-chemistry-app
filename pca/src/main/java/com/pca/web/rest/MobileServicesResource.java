@@ -1,5 +1,7 @@
 package com.pca.web.rest;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -14,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -194,12 +197,12 @@ public class MobileServicesResource {
 			response.setSuccess(false);
 			response.setMessage(e.getMessage());
 			log.error(String.format("login for username: %s throws error: %s", login, e.getMessage()));
-			return new ResponseEntity<JsonObjectDTO>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<JsonObjectDTO>(response, HttpStatus.OK);
 		}
 	}
 
 	@RequestMapping(value = "/match", method = RequestMethod.POST, produces = "application/json")
-	public ResponseEntity<JsonObjectDTO> addMatch(@RequestParam MatchDTO match) {
+	public ResponseEntity<JsonObjectDTO> addMatch(@RequestBody MatchDTO match) {
 
 		log.info(String.format("Call match service: %s", match.toString()));
 		JsonObjectDTO response = new JsonObjectDTO();
@@ -218,7 +221,7 @@ public class MobileServicesResource {
 			response.setMessage(e.getMessage());
 			log.error(String.format("match service for team with id %s and userId= %s throws error: %s",
 					match.getTeamId(), match.getUserId(), e.getMessage()));
-			return new ResponseEntity<JsonObjectDTO>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<JsonObjectDTO>(response, HttpStatus.OK);
 		}
 
 	}
@@ -233,9 +236,10 @@ public class MobileServicesResource {
 					String.format("Team with id %s and userId= %s not found", match.getTeamId(), match.getUserId()));
 		}
 
+		DateFormat formater = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		// Create the match in DB
 		Matches matches = matchesService.saveAndFlush(new Matches(match.getOpponentName(), match.getStadiumName(),
-				match.getFormation(), match.getMatchTime(), team, match.getGoals(), match.getOpponentGoals()));
+				match.getFormation(), formater.parse(match.getMatchTime()), team, match.getGoals(), match.getOpponentGoals()));
 
 		// save the passes for the match
 		List<Passes> passes = new ArrayList<Passes>();
