@@ -212,7 +212,7 @@ public class MobileServicesResource {
 		    Long matchId = saveMatch(match);
 			response.setSuccess(true);
 			response.setData(matchId);
-			log.error(String.format("SUCCESS match service for team with id %s and userId= %s saved in DB with matchID: %s",
+			log.info(String.format("SUCCESS match service for team with id %s and userId= %s saved in DB with matchID: %s",
 					match.getTeamId(), match.getUserId(), matchId));
 			return new ResponseEntity<JsonObjectDTO>(response, HttpStatus.OK);
 			
